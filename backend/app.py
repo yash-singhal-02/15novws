@@ -25,70 +25,8 @@ def add_cors_headers(response):
 
 supabase: Client = create_client(
     os.environ["SUPABASE_URL"],
-    os.environ["SUPABASE_PUBLISHABLE_KEY"],
+    os.environ.get("SUPABASE_SERVICE_ROLE_KEY") or os.environ["SUPABASE_PUBLISHABLE_KEY"],
 )
-
-
-def current_user():
-    """Return the authenticated Supabase user, or None for an invalid token."""
-    authorization = request.headers.get("Authorization", "")
-    scheme, _, token = authorization.partition(" ")
-    if scheme.lower() != "bearer" or not token:
-        return None
-    try:
-        return supabase.auth.get_user(token).user
-    except Exception:
-        return None
-
-
-def require_user():
-    user = current_user()
-    if user is None:
-        return None, (jsonify({"error": "Authentication required"}), 401)
-    return user, None
-
-
-@app.post("/api/auth/login")
-def login():
-    payload = request.get_json(silent=True) or {}
-    email = str(payload.get("email", "")).strip()
-    password = payload.get("password", "")
-    if not email or not isinstance(password, str) or not password:
-        return jsonify({"error": "Email and password are required"}), 400
-
-    try:
-        result = supabase.auth.sign_in_with_password({"email": email, "password": password})
-        if not result.session or not result.user:
-            return jsonify({"error": "Sign-in did not return a session"}), 401
-        return jsonify({
-            "access_token": result.session.access_token,
-            "refresh_token": result.session.refresh_token,
-            "expires_at": result.session.expires_at,
-            "user": {"id": result.user.id, "email": result.user.email},
-        }), 200
-    except Exception:
-        # Avoid returning provider details that could reveal account state.
-        return jsonify({"error": "Invalid email or password"}), 401
-
-
-@app.post("/api/auth/refresh")
-def refresh_auth():
-    payload = request.get_json(silent=True) or {}
-    refresh_token = payload.get("refresh_token", "")
-    if not isinstance(refresh_token, str) or not refresh_token:
-        return jsonify({"error": "Refresh token is required"}), 400
-    try:
-        result = supabase.auth.refresh_session(refresh_token)
-        if not result.session or not result.user:
-            return jsonify({"error": "Session could not be refreshed"}), 401
-        return jsonify({
-            "access_token": result.session.access_token,
-            "refresh_token": result.session.refresh_token,
-            "expires_at": result.session.expires_at,
-            "user": {"id": result.user.id, "email": result.user.email},
-        }), 200
-    except Exception:
-        return jsonify({"error": "Session expired. Sign in again."}), 401
 
 
 @app.get("/health")
@@ -103,11 +41,9 @@ def index():
         "endpoints": {
             "GET /api/events": "Browse events",
             "GET /api/events/<id>": "Get event details",
-            "POST /api/auth/login": "Sign in with a Supabase email and password",
-            "POST /api/auth/refresh": "Refresh a Supabase session",
-            "POST /api/registrations": "Create a registration (authentication required)",
-            "GET /api/me/registrations": "List the current user's registrations (authentication required)",
-            "GET /api/events/<id>/registrations": "List attendees (organizer authentication required)",
+            "POST /api/registrations": "Create a registration for the selected user UUID",
+            "GET /api/me/registrations?user_id=<uuid>": "List registrations for the selected user UUID",
+            "GET /api/events/<id>/registrations?user_id=<uuid>": "List attendees for the event organizer UUID",
         },
     }), 200
 
@@ -140,17 +76,16 @@ def get_event(event_id):
 
 @app.post("/api/registrations")
 def create_registration():
-    user, auth_error = require_user()
-    if auth_error:
-        return auth_error
-
     payload = request.get_json(silent=True) or {}
+    user_id = payload.get("user_id")
     event_id = payload.get("event_id")
+    if not user_id:
+        return jsonify({"error": "user_id is required"}), 400
     if not event_id:
         return jsonify({"error": "event_id is required"}), 400
 
-    # The authenticated identity is authoritative; never accept a client-supplied user_id.
-    registration = {**payload, "event_id": event_id, "user_id": user.id}
+    # The website switches among saved personas by UUID; no sign-in session is used.
+    registration = {**payload, "event_id": event_id, "user_id": user_id}
     registration.pop("id", None)
     try:
         result = (
@@ -170,14 +105,14 @@ def create_registration():
 
 @app.get("/api/me/registrations")
 def my_registrations():
-    user, auth_error = require_user()
-    if auth_error:
-        return auth_error
+    user_id = request.args.get("user_id", "").strip()
+    if not user_id:
+        return jsonify({"error": "user_id query parameter is required"}), 400
     try:
         result = (
             supabase.table("registrations")
             .select("*")
-            .eq("user_id", user.id)
+            .eq("user_id", user_id)
             .execute()
         )
         return jsonify(result.data), 200
@@ -187,9 +122,9 @@ def my_registrations():
 
 @app.get("/api/events/<event_id>/registrations")
 def event_registrations(event_id):
-    user, auth_error = require_user()
-    if auth_error:
-        return auth_error
+    user_id = request.args.get("user_id", "").strip()
+    if not user_id:
+        return jsonify({"error": "user_id query parameter is required"}), 400
     try:
         event_result = (
             supabase.table("events")
@@ -203,7 +138,7 @@ def event_registrations(event_id):
 
         event = event_result.data[0]
         # Event ownership is represented by organizer_id (or user_id in simpler schemas).
-        if event.get("organizer_id", event.get("user_id")) != user.id:
+        if event.get("organizer_id", event.get("user_id")) != user_id:
             return jsonify({"error": "Organizer access required"}), 403
 
         result = (

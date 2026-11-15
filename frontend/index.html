@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -21,7 +21,7 @@
       <a href="#registrations" data-nav="registrations">My registrations</a>
       <a href="#organizer" data-nav="organizer">Organizer</a>
     </nav>
-    <button class="user-chip" id="user-menu" type="button"><span class="avatar">U</span><span id="user-label">Sign in</span><span aria-hidden="true">⌄</span></button>
+    <button class="user-chip" id="user-menu" type="button"><span class="avatar">U</span><span id="user-label">Switch user</span><span aria-hidden="true">⌄</span></button>
   </header>
 
   <main>
@@ -45,7 +45,7 @@
 
     <section class="content-section registrations-section" id="registrations">
       <div class="section-heading"><div><span class="eyebrow purple-eyebrow">YOUR PLANS</span><h2>My <em>registrations.</em></h2><p class="section-intro">All the events you’ve saved, in one place.</p></div><button class="button button-outline" id="refresh-registrations" type="button">↻ <span>Sync registrations</span></button></div>
-      <div class="inline-hint" id="registrations-hint">Sign in with your campus account to load your registrations.</div>
+      <div class="inline-hint" id="registrations-hint">Choose a user with the button in the top right to load registrations.</div>
       <div id="registration-status" class="notice" role="status" hidden></div>
       <div class="registration-grid" id="registration-grid"></div>
     </section>
@@ -58,7 +58,7 @@
   </main>
 
   <dialog id="event-dialog" class="event-dialog"><button class="dialog-close" id="close-dialog" aria-label="Close event details" type="button">×</button><div id="dialog-content"></div></dialog>
-  <dialog id="user-dialog" class="user-dialog"><button class="dialog-close" id="close-user-dialog" aria-label="Close" type="button">×</button><span class="eyebrow purple-eyebrow">CAMPUS ACCOUNT</span><h2>Sign in to Campus Pulse</h2><p id="auth-state">Sign in to manage registrations and attendee lists.</p><div id="auth-status" class="notice" role="status" hidden></div><form id="auth-form"><label for="auth-email">Email</label><input id="auth-email" name="email" type="email" autocomplete="username" placeholder="you@example.com" required /><label for="auth-password">Password</label><input id="auth-password" name="password" type="password" autocomplete="current-password" required /><div class="form-actions"><button class="button button-outline" id="sign-out" type="button" hidden>Sign out</button><button class="button button-primary" id="auth-submit" type="submit">Sign in</button></div></form></dialog>
+  <dialog id="user-dialog" class="user-dialog"><button class="dialog-close" id="close-user-dialog" aria-label="Close" type="button">×</button><span class="eyebrow purple-eyebrow">SWITCH USER</span><h2>Who’s browsing?</h2><p>Add each of your five users once with their UUID, then switch between them here. Saved users stay in this browser.</p><div class="persona-list" id="persona-list"></div><button class="organizer-shortcut" id="add-organizer-persona" type="button" hidden>＋ Add the event organizer from the API</button><form id="user-form"><label for="user-name-input">User name</label><input id="user-name-input" name="userName" type="text" autocomplete="name" placeholder="Name, e.g. Alex" required /><label for="user-id-input">User UUID</label><input id="user-id-input" name="userId" type="text" autocomplete="off" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" required /><div class="form-actions"><button class="button button-outline" id="clear-user" type="button">Clear selection</button><button class="button button-primary" type="submit">Save user</button></div></form></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

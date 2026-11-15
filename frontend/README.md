@@ -1,15 +1,7 @@
 # Campus Pulse frontend
 
-This is a static frontend. Deploy the `frontend` folder as the Vercel project root; no build command or install command is needed. Vercel serves `index.html` and uses `vercel.json` to proxy `/api/*` requests to the Render backend at `https://one5novws.onrender.com`. The browser therefore calls the Vercel origin, avoiding cross-origin browser requests and CORS preflight issues.
+This is a static frontend. Deploy the `frontend` folder as the Vercel project root; no build or install command is needed. Vercel serves `index.html` and proxies `/api/*` to the Render backend through `vercel.json`, so the browser uses the Vercel origin and avoids cross-origin requests.
 
-For local development, run this folder's same-origin API proxy:
+Run locally from this folder with `node server.js`, then open `http://127.0.0.1:8000`. The Node server proxies API requests; `python -m http.server` does not.
 
-```powershell
-node server.js
-```
-
-Then open [http://127.0.0.1:8000](http://127.0.0.1:8000). `python -m http.server` serves the files but does not proxy API requests.
-
-Sign in from the top-right user control with an existing Supabase email and password. The frontend stores the short-lived session in this browser and sends its bearer token to protected API endpoints. The backend refreshes expired sessions. UUID entry is not authentication; registrations are associated with the signed-in Supabase user. The backend must be redeployed with the `/api/auth/login` and `/api/auth/refresh` routes before this sign-in flow is available.
-
-The backend's `GET /api/me/registrations` and event attendee-list endpoint require authentication. Attendee lists are additionally limited to the event's organizer. New Supabase accounts must be created/configured in Supabase; this frontend only signs in existing accounts.
+Use the user control at the top right to add each person's UUID once, then switch between the saved users. The selected UUID is sent to the backend for registrations. This is UUID selection, not authentication: anyone who knows a user's UUID can request or create registrations for that user. If Supabase row-level security blocks those calls, configure `SUPABASE_SERVICE_ROLE_KEY` on Render only. A server-role key gives the backend broad database access, so the no-login API should only be used for data you intend to expose to anyone who can reach it.

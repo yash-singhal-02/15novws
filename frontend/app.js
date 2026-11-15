@@ -1,11 +1,11 @@
-(() => {
+﻿(() => {
   // Use the frontend origin. Vercel and the local Node server proxy /api to Render,
   // keeping browser requests same-origin and avoiding CORS/preflight failures.
   const API = new URL('/', window.location.href);
   const $ = (selector, root = document) => root.querySelector(selector);
-  let session = null;
-  try { session = JSON.parse(localStorage.getItem('campusPulseSession') || 'null'); } catch { session = null; }
-  const state = { events: [], filter: 'all', search: '', selectedEvent: null, session };
+  let personas = [];
+  try { personas = JSON.parse(localStorage.getItem('campusPulsePersonas') || '[]'); } catch { personas = []; }
+  const state = { events: [], filter: 'all', search: '', selectedEvent: null, userId: localStorage.getItem('campusPulseUserId') || '', personas };
   const colors = ['#3730a3,#818cf8', '#b74a2d,#fb923c', '#0e7490,#2dd4bf', '#6d28d9,#c084fc', '#047857,#34d399'];
   const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
   const humanize = value => String(value || '').replace(/[_-]+/g, ' ').replace(/\b\w/g, ch => ch.toUpperCase());
@@ -16,23 +16,9 @@
   const dateOf = event => event?.starts_at ?? event?.start_at ?? event?.date ?? event?.event_date ?? event?.startsAt ?? '';
   const formatDate = value => { if (!value) return 'Date to be announced'; const date = new Date(value); return Number.isNaN(date.getTime()) ? String(value) : new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: value.includes?.('T') ? 'numeric' : undefined, minute: value.includes?.('T') ? '2-digit' : undefined }).format(date); };
   const unwrap = data => Array.isArray(data) ? data : Array.isArray(data?.data) ? data.data : Array.isArray(data?.events) ? data.events : Array.isArray(data?.registrations) ? data.registrations : Array.isArray(data?.items) ? data.items : data?.data && typeof data.data === 'object' ? data.data : data;
-  function saveSession(value) { state.session = value; localStorage.setItem('campusPulseSession', JSON.stringify(value)); updateUser(); }
-  function clearSession() { state.session = null; localStorage.removeItem('campusPulseSession'); updateUser(); }
-  async function refreshSession() {
-    if (!state.session?.refresh_token) throw new Error('Sign in again to continue.');
-    const response = await fetch(new URL('api/auth/refresh', API), { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ refresh_token: state.session.refresh_token }) });
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) { clearSession(); throw new Error(data.error || 'Session expired. Sign in again.'); }
-    saveSession(data);
-  }
-  async function api(path, options = {}, retried = false) {
+  async function api(path, options = {}) {
     const url = new URL(path.replace(/^\//, ''), API);
-    const headers = { Accept: 'application/json', ...(options.body ? { 'Content-Type': 'application/json' } : {}), ...options.headers };
-    if (state.session?.access_token && !path.startsWith('api/auth/')) headers.Authorization = `Bearer ${state.session.access_token}`;
-    const response = await fetch(url, { ...options, headers });
-    if (response.status === 401 && !retried && state.session?.refresh_token && !path.startsWith('api/auth/')) {
-      try { await refreshSession(); return api(path, options, true); } catch { /* Show the original API error below. */ }
-    }
+    const response = await fetch(url, { ...options, headers: { Accept: 'application/json', ...(options.body ? { 'Content-Type': 'application/json' } : {}), ...options.headers } });
     const raw = await response.text();
     let data;
     try { data = raw ? JSON.parse(raw) : null; } catch { data = raw; }
@@ -42,13 +28,15 @@
   function showNotice(selector, message, type = 'info') { const node = $(selector); node.textContent = message; node.className = `notice ${type}`; node.hidden = false; }
   function clearNotice(selector) { const node = $(selector); node.hidden = true; node.textContent = ''; }
   function showToast(message) { const toast = $('#toast'); toast.textContent = message; toast.classList.add('show'); clearTimeout(showToast.timer); showToast.timer = setTimeout(() => toast.classList.remove('show'), 2900); }
-  function updateUser() {
-    const user = state.session?.user;
-    $('#user-label').textContent = user?.email || 'Sign in';
-    $('#registrations-hint').textContent = user ? `Signed in as ${user.email || 'your account'}.` : 'Sign in with your campus account to load your registrations.';
-    $('#auth-state').textContent = user ? `Signed in as ${user.email}.` : 'Sign in to manage registrations and attendee lists.';
-    $('#sign-out').hidden = !user;
+  function persistPersonas() { localStorage.setItem('campusPulsePersonas', JSON.stringify(state.personas)); localStorage.setItem('campusPulseUserId', state.userId); }
+  function renderPersonas() {
+    $('#persona-list').innerHTML = state.personas.length ? state.personas.map((persona, index) => `<button class="persona-option ${persona.id === state.userId ? 'active' : ''}" type="button" data-persona-index="${index}"><span class="avatar">${esc((persona.name || 'U').slice(0, 1).toUpperCase())}</span><span><strong>${esc(persona.name)}</strong><small>${esc(persona.id.slice(0, 8))}…</small></span>${persona.id === state.userId ? '<span class="persona-check">✓</span>' : ''}</button>`).join('') : '<div class="empty-state">No saved people yet. Add each user below.</div>';
+    const organizerId = state.events.find(event => event.organizer_id)?.organizer_id;
+    const shortcut = $('#add-organizer-persona');
+    shortcut.hidden = !organizerId || state.personas.some(persona => persona.id === organizerId);
+    shortcut.dataset.organizerId = organizerId || '';
   }
+  function updateUser() { const active = state.personas.find(persona => persona.id === state.userId); $('#user-label').textContent = active ? active.name : 'Switch user'; $('#registrations-hint').textContent = state.userId ? `Your registrations are linked to ${active?.name || 'the selected user'}.` : 'Choose or add a person with the button in the top right to load registrations.'; renderPersonas(); }
   function eventCard(event, index) {
     const closed = !isOpen(event), status = humanize(event.status || 'open'), id = idOf(event);
     const rawCapacity = Number(event.capacity), rawCount = Number(event.registration_count ?? event.registrations_count ?? event.attendee_count ?? 0);
@@ -76,7 +64,7 @@
     try {
       const data = await api('api/events');
       state.events = unwrap(data).filter(item => item && typeof item === 'object');
-      clearNotice('#event-status'); renderEvents(); renderOrganizerEvents();
+      clearNotice('#event-status'); renderEvents(); renderOrganizerEvents(); renderPersonas();
       if (!state.events.length) showNotice('#event-status', 'No events have been published yet. Check back soon.', 'info');
     } catch (error) { state.events = []; renderEvents(); showNotice('#event-status', `Could not load events: ${error.message}. Please try again.`, 'error'); }
     finally { button.disabled = false; }
@@ -106,10 +94,10 @@
     } catch { /* The event list still provides enough detail to render a useful screen. */ }
   }
   async function registerForEvent(event) {
-    if (!state.session?.access_token) { $('#user-dialog').showModal(); showToast('Sign in to register for an event.'); return; }
+    if (!state.userId) { $('#user-dialog').showModal(); showToast('Choose a user to register for an event.'); return; }
     const button = $('#register-event'); if (button) { button.disabled = true; button.textContent = 'Registering…'; }
     try {
-      await api('api/registrations', { method: 'POST', body: JSON.stringify({ event_id: idOf(event) }) });
+      await api('api/registrations', { method: 'POST', body: JSON.stringify({ user_id: state.userId, event_id: idOf(event) }) });
       showToast('You’re registered!'); $('#event-dialog').close(); await loadRegistrations();
     } catch (error) { showToast(error.status === 409 ? 'You are already registered for this event.' : `Registration failed: ${error.message}`); if (button) { button.disabled = false; button.textContent = 'Register for event ↗'; } }
   }
@@ -118,20 +106,21 @@
     return state.events.find(event => String(idOf(event)) === String(id)) || registration.event || {};
   }
   async function loadRegistrations() {
-    if (!state.session?.access_token) { $('#registration-grid').innerHTML = '<div class="empty-state"><b>Sign in to see your plans.</b>Use the sign-in button at the top of the page.</div>'; return; }
+    if (!state.userId) { $('#registration-grid').innerHTML = '<div class="empty-state"><b>Choose a user to see their plans.</b>Use the user button at the top of the page.</div>'; return; }
     showNotice('#registration-status', 'Loading registrations…');
     try {
-      const data = await api('api/me/registrations');
+      const data = await api(`api/me/registrations?user_id=${encodeURIComponent(state.userId)}`);
       const registrations = unwrap(data); clearNotice('#registration-status');
       if (!Array.isArray(registrations) || !registrations.length) { $('#registration-grid').innerHTML = '<div class="empty-state"><b>No registrations yet.</b>Explore events above and save your spot.</div>'; return; }
       $('#registration-grid').innerHTML = registrations.map(reg => { const event = registrationEvent(reg); return `<article class="registration-card"><div><span class="status-pill">${esc(humanize(event.status || 'registered'))}</span><h3>${esc(titleOf(event))}</h3><p>${esc(formatDate(dateOf(event)))}</p><span class="registration-id">${esc(reg.id || reg.registration_id || 'Registration confirmed')}</span></div><span aria-hidden="true" style="font-size:22px;color:#6259e9">✓</span></article>`; }).join('');
-    } catch (error) { $('#registration-grid').innerHTML = ''; showNotice('#registration-status', `Could not load your registrations: ${error.message}. The API may require a signed-in user context.`, 'error'); }
+    } catch (error) { $('#registration-grid').innerHTML = ''; showNotice('#registration-status', `Could not load registrations: ${error.message}.`, 'error'); }
   }
   async function loadRoster(eventId) {
     document.querySelector('.roster-list')?.remove();
     showNotice('#organizer-status', 'Loading attendee list…');
     try {
-      const data = await api(`api/events/${encodeURIComponent(eventId)}/registrations`);
+      if (!state.userId) { $('#user-dialog').showModal(); throw new Error('Choose the event organizer user first.'); }
+      const data = await api(`api/events/${encodeURIComponent(eventId)}/registrations?user_id=${encodeURIComponent(state.userId)}`);
       const registrations = unwrap(data); clearNotice('#organizer-status');
       if (!Array.isArray(registrations) || !registrations.length) { showNotice('#organizer-status', 'No registrations found for this event.', 'info'); return; }
       showNotice('#organizer-status', `${registrations.length} attendee${registrations.length === 1 ? '' : 's'} registered.`, 'info');
@@ -148,22 +137,10 @@
   $('#user-menu').addEventListener('click', () => $('#user-dialog').showModal());
   $('#close-dialog').addEventListener('click', () => $('#event-dialog').close());
   $('#close-user-dialog').addEventListener('click', () => $('#user-dialog').close());
-  $('#auth-form').addEventListener('submit', async event => {
-    event.preventDefault();
-    const button = $('#auth-submit'), email = $('#auth-email').value.trim(), password = $('#auth-password').value;
-    button.disabled = true; button.textContent = 'Signing in…';
-    try {
-      const data = await api('api/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) });
-      saveSession(data); $('#auth-password').value = ''; clearNotice('#auth-status'); $('#user-dialog').close();
-      clearNotice('#registration-status'); await loadRegistrations(); showToast('Signed in successfully.');
-    } catch (error) { showNotice('#auth-status', error.message, 'error'); }
-    finally { button.disabled = false; button.textContent = 'Sign in'; }
-  });
-  $('#sign-out').addEventListener('click', () => {
-    clearSession(); $('#user-dialog').close();
-    $('#registration-grid').innerHTML = '<div class="empty-state"><b>Sign in to see your plans.</b>Use the sign-in button at the top of the page.</div>';
-    showToast('Signed out.');
-  });
+  $('#persona-list').addEventListener('click', async event => { const button = event.target.closest('[data-persona-index]'); if (!button) return; const persona = state.personas[Number(button.dataset.personaIndex)]; if (!persona) return; state.userId = persona.id; persistPersonas(); updateUser(); $('#user-dialog').close(); await loadRegistrations(); showToast(`Switched to ${persona.name}.`); });
+  $('#user-form').addEventListener('submit', async event => { event.preventDefault(); const input = $('#user-id-input').value.trim(), name = $('#user-name-input').value.trim(); if (!input || !name) { showToast('Enter a name and user UUID.'); return; } const existing = state.personas.findIndex(persona => persona.id === input); const persona = { name, id: input }; if (existing >= 0) state.personas[existing] = persona; else state.personas.push(persona); state.userId = input; persistPersonas(); updateUser(); $('#user-name-input').value = ''; $('#user-id-input').value = ''; $('#user-dialog').close(); await loadRegistrations(); showToast(`${name} saved on this device.`); });
+  $('#clear-user').addEventListener('click', () => { state.userId = ''; persistPersonas(); updateUser(); $('#user-dialog').close(); $('#registration-grid').innerHTML = '<div class="empty-state"><b>Choose a user to see their plans.</b>Use the user button at the top of the page.</div>'; clearNotice('#registration-status'); showToast('User selection cleared.'); });
+  $('#add-organizer-persona').addEventListener('click', async event => { const id = event.currentTarget.dataset.organizerId; if (!id) return; const persona = { name: 'Event organizer', id }; state.personas.push(persona); state.userId = id; persistPersonas(); updateUser(); $('#user-dialog').close(); await loadRegistrations(); showToast('Event organizer selected.'); });
   $('#event-dialog').addEventListener('click', event => { if (event.target === $('#event-dialog')) $('#event-dialog').close(); });
   updateUser(); loadEvents(); loadRegistrations();
 })();
