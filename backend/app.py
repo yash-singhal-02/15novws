@@ -48,6 +48,49 @@ def require_user():
     return user, None
 
 
+@app.post("/api/auth/login")
+def login():
+    payload = request.get_json(silent=True) or {}
+    email = str(payload.get("email", "")).strip()
+    password = payload.get("password", "")
+    if not email or not isinstance(password, str) or not password:
+        return jsonify({"error": "Email and password are required"}), 400
+
+    try:
+        result = supabase.auth.sign_in_with_password({"email": email, "password": password})
+        if not result.session or not result.user:
+            return jsonify({"error": "Sign-in did not return a session"}), 401
+        return jsonify({
+            "access_token": result.session.access_token,
+            "refresh_token": result.session.refresh_token,
+            "expires_at": result.session.expires_at,
+            "user": {"id": result.user.id, "email": result.user.email},
+        }), 200
+    except Exception:
+        # Avoid returning provider details that could reveal account state.
+        return jsonify({"error": "Invalid email or password"}), 401
+
+
+@app.post("/api/auth/refresh")
+def refresh_auth():
+    payload = request.get_json(silent=True) or {}
+    refresh_token = payload.get("refresh_token", "")
+    if not isinstance(refresh_token, str) or not refresh_token:
+        return jsonify({"error": "Refresh token is required"}), 400
+    try:
+        result = supabase.auth.refresh_session(refresh_token)
+        if not result.session or not result.user:
+            return jsonify({"error": "Session could not be refreshed"}), 401
+        return jsonify({
+            "access_token": result.session.access_token,
+            "refresh_token": result.session.refresh_token,
+            "expires_at": result.session.expires_at,
+            "user": {"id": result.user.id, "email": result.user.email},
+        }), 200
+    except Exception:
+        return jsonify({"error": "Session expired. Sign in again."}), 401
+
+
 @app.get("/health")
 def health():
     return jsonify({"status": "ok"}), 200
@@ -60,6 +103,8 @@ def index():
         "endpoints": {
             "GET /api/events": "Browse events",
             "GET /api/events/<id>": "Get event details",
+            "POST /api/auth/login": "Sign in with a Supabase email and password",
+            "POST /api/auth/refresh": "Refresh a Supabase session",
             "POST /api/registrations": "Create a registration (authentication required)",
             "GET /api/me/registrations": "List the current user's registrations (authentication required)",
             "GET /api/events/<id>/registrations": "List attendees (organizer authentication required)",

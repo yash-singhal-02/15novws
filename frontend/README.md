@@ -10,6 +10,6 @@ node server.js
 
 Then open [http://127.0.0.1:8000](http://127.0.0.1:8000). `python -m http.server` serves the files but does not proxy API requests.
 
-Use the top-right user control to save named personas and switch between them. Each UUID is stored in this browser's local storage. The backend does not provide a users-list endpoint, so profiles cannot be discovered automatically. The organizer UUID returned with events can be added with the organizer shortcut.
+Sign in from the top-right user control with an existing Supabase email and password. The frontend stores the short-lived session in this browser and sends its bearer token to protected API endpoints. The backend refreshes expired sessions. UUID entry is not authentication; registrations are associated with the signed-in Supabase user. The backend must be redeployed with the `/api/auth/login` and `/api/auth/refresh` routes before this sign-in flow is available.
 
-The backend's `GET /api/me/registrations` and event attendee-list endpoint require authentication. This frontend does not implement Supabase sign-in or send a bearer token, so the backend will deny those private requests. Creating a registration also requires authentication on the backend; entering a user UUID alone does not authenticate the request.
+The backend's `GET /api/me/registrations` and event attendee-list endpoint require authentication. Attendee lists are additionally limited to the event's organizer. New Supabase accounts must be created/configured in Supabase; this frontend only signs in existing accounts.
