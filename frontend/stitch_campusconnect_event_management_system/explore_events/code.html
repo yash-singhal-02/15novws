@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'inverse-on-surface': '#eaf1ff', 'on-tertiary-fixed': '#002113', 'surface-container-high': '#dce9ff', 'outline-variant': '#c7c4d8', 'primary-container': '#4f46e5', 'inverse-surface': '#213145', 'secondary-container': '#dae2fd', 'tertiary': '#005338', 'outline': '#777587', 'on-secondary-fixed-variant': '#3f465c', 'secondary-fixed-dim': '#bec6e0', 'tertiary-fixed': '#6ffbbe', 'surface-bright': '#f8f9ff', 'secondary': '#565e74', 'on-secondary-fixed': '#131b2e', 'surface-container-lowest': '#ffffff', 'surface-tint': '#4d44e3', 'on-background': '#0b1c30', 'on-secondary-container': '#5c647a', 'primary-fixed': '#e2dfff', 'on-error-container': '#93000a', 'surface-variant': '#d3e4fe', 'surface-container-highest': '#d3e4fe', 'surface-container': '#e5eeff', 'secondary-fixed': '#dae2fd', 'primary': '#3525cd', 'surface': '#f8f9ff', 'on-secondary': '#ffffff', 'on-primary': '#ffffff', 'on-tertiary': '#ffffff', 'on-tertiary-container': '#67f4b7', 'surface-container-low': '#eff4ff', 'error': '#ba1a1a', 'surface-dim': '#cbdbf5', 'on-tertiary-fixed-variant': '#005236', 'on-surface': '#0b1c30', 'tertiary-container': '#006e4b', 'inverse-primary': '#c3c0ff', 'on-primary-container': '#dad7ff', 'on-error': '#ffffff', 'primary-fixed-dim': '#c3c0ff', 'on-primary-fixed': '#0f0069', 'background': '#f8f9ff', 'tertiary-fixed-dim': '#4edea3', 'on-primary-fixed-variant': '#3323cc', 'on-surface-variant': '#464555', 'error-container': '#ffdad6' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'gutter': '1.5rem', 'margin': '2rem', 'space-md': '1rem', 'margin-mobile': '1rem', 'space-xl': '2.5rem', 'space-lg': '1.5rem', 'gutter-mobile': '1rem', 'space-xs': '0.25rem', 'space-sm': '0.5rem' }, 'fontFamily': { 'body-lg': ['Inter'], 'label-sm': ['Plus Jakarta Sans'], 'headline-xl-mobile': ['Plus Jakarta Sans'], 'label-lg': ['Plus Jakarta Sans'], 'headline-md': ['Plus Jakarta Sans'], 'headline-xl': ['Plus Jakarta Sans'], 'display-lg-mobile': ['Plus Jakarta Sans'], 'body-sm': ['Inter'], 'label-md': ['Plus Jakarta Sans'], 'display-lg': ['Plus Jakarta Sans'], 'headline-lg': ['Plus Jakarta Sans'], 'body-md': ['Inter'] }, 'fontSize': { 'body-lg': ['1.125rem', { 'lineHeight': '1.6', 'letterSpacing': '-0.01em', 'fontWeight': '400' }], 'label-sm': ['0.6875rem', { 'lineHeight': '1.15', 'letterSpacing': '0.04em', 'fontWeight': '700' }], 'headline-xl-mobile': ['1.75rem', { 'lineHeight': '1.25', 'letterSpacing': '-0.02em', 'fontWeight': '700' }], 'label-lg': ['0.875rem', { 'lineHeight': '1.25', 'letterSpacing': '-0.005em', 'fontWeight': '600' }], 'headline-md': ['1.25rem', { 'lineHeight': '1.35', 'letterSpacing': '-0.015em', 'fontWeight': '600' }], 'headline-xl': ['2.25rem', { 'lineHeight': '1.2', 'letterSpacing': '-0.025em', 'fontWeight': '700' }], 'display-lg-mobile': ['2.25rem', { 'lineHeight': '1.2', 'letterSpacing': '-0.025em', 'fontWeight': '800' }], 'body-sm': ['0.8125rem', { 'lineHeight': '1.5', 'letterSpacing': '0', 'fontWeight': '400' }], 'label-md': ['0.75rem', { 'lineHeight': '1.2', 'letterSpacing': '0.02em', 'fontWeight': '600' }], 'display-lg': ['3rem', { 'lineHeight': '1.15', 'letterSpacing': '-0.03em', 'fontWeight': '800' }], 'headline-lg': ['1.5rem', { 'lineHeight': '1.3', 'letterSpacing': '-0.02em', 'fontWeight': '700' }], 'body-md': ['0.9375rem', { 'lineHeight': '1.55', 'letterSpacing': '-0.005em', 'fontWeight': '400' }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-[#0F172A]/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-2"><div class="flex items-center gap-2 min-w-0"><img alt="CampusConnect Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBjnOI7pQKP1DW_O46teGcdaiJww82zEfOCL7cqSS3MNcWrJnBmL-yCiAiSia2zUVG_5MLVGHc40rA3NcoRQ1Qmad8xbzjVmaDwFwhOece37dJ4xzojUZQoiikrwpA97hhc6CQjQpQFPAY8W_4qZQ7aqjTevBqRXeLx7tz8fcnZ_A_TVwTSpclXAnAQ5mG8WWboKOQZiLgJ-sp4r8LN1axJH7nenQWte0E_PUoZQPg"/><div class="flex flex-col min-w-0"><span class="font-headline-md text-headline-md font-bold tracking-tight text-white leading-none truncate">CampusConnect</span><span class="font-label-sm text-label-sm text-slate-400 leading-tight truncate">Explore Events</span></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Switch active demo user role" class="h-11 px-space-sm bg-white/10 hover:bg-white/15 active:scale-95 transition-all rounded-full flex items-center gap-space-xs text-white" id="switch-user-btn"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span><span class="font-label-md text-label-md max-w-[90px] truncate text-slate-100">Alex R. (Student)</span><span class="material-symbols-outlined text-[18px] text-slate-300">swap_horiz</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full pb-10">
+<!-- Active User Status Strip -->
+<section class="px-gutter-mobile pt-space-sm mb-space-md">
+<div class="bg-surface-container-low rounded-2xl p-space-sm shadow-sm flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-headline-md font-bold text-xs shrink-0 shadow-sm">
+          AT
+        </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface truncate font-bold" id="current-user-name">Alex Turner</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-label-sm font-semibold tracking-wide uppercase bg-secondary-container text-on-secondary-container">
+              Student
+            </span>
+</div>
+<span class="font-body-sm text-body-sm text-outline truncate" id="current-user-email">alex.turner@campus.edu</span>
+</div>
+</div>
+<button aria-label="Switch User Persona" class="shrink-0 px-3 py-1.5 bg-surface-container-lowest hover:bg-surface-container active:scale-95 transition-all rounded-full flex items-center gap-1 text-primary shadow-sm" id="trigger-switch-modal">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+<span class="font-label-sm text-label-sm font-bold">Switch</span>
+</button>
+</div>
+</section>
+<!-- Hero Campus Telemetry Banner -->
+<section class="px-gutter-mobile mb-space-lg">
+<div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary-container to-[#1E1B4B] p-space-md text-on-primary shadow-lg">
+<div class="absolute -right-6 -bottom-6 w-36 h-36 bg-surface-container-lowest/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-2">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-lowest/15 backdrop-blur-md self-start">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-ping"></span>
+<span class="font-label-sm text-label-sm tracking-wider uppercase text-inverse-on-surface">Spring Term 2025</span>
+</div>
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile font-bold tracking-tight text-white leading-tight">
+          Discover What's Happening on Campus
+        </h1>
+<p class="font-body-sm text-body-sm text-inverse-on-surface/90">
+          Book seats in faculty symposiums, coding sprints, and campus festivals in real-time.
+        </p>
+<!-- Campus Stats Pill Grid -->
+<div class="grid grid-cols-2 gap-2 mt-2 pt-2 bg-black/15 -mx-1 px-3 py-2 rounded-xl backdrop-blur-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">event_available</span>
+<div>
+<div class="font-headline-md text-headline-md leading-none font-bold text-white">14</div>
+<div class="font-label-sm text-label-sm text-inverse-on-surface/80">Active Events</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">group_add</span>
+<div>
+<div class="font-headline-md text-headline-md leading-none font-bold text-white">850+</div>
+<div class="font-label-sm text-label-sm text-inverse-on-surface/80">Seats Claimed</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Search & Dynamic Filter Toolbar -->
+<section class="px-gutter-mobile mb-space-md flex flex-col gap-space-sm">
+<!-- Search Bar -->
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px] pointer-events-none">search</span>
+<input class="w-full h-11 pl-10 pr-10 bg-surface-container-lowest text-on-surface rounded-xl font-body-md text-body-md shadow-sm outline-none focus:ring-2 focus:ring-primary-container transition-all placeholder:text-outline" id="search-input" placeholder="Search events by title or speaker..." type="text"/>
+<button aria-label="Clear search query" class="hidden absolute right-3 text-outline hover:text-on-surface p-1 rounded-full" id="clear-search-btn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Filter Pills Carousel -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 -mx-gutter-mobile px-gutter-mobile scrollbar-none" id="filter-pills-container">
+<button class="filter-pill active shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-all bg-primary-container text-white shadow-sm font-semibold" data-filter="all">
+        All Status (4)
+      </button>
+<button class="filter-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-filter="open">
+        Open Seats
+      </button>
+<button class="filter-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-filter="fast">
+        Filling Fast
+      </button>
+<button class="filter-pill shrink-0 px-3.5 py-1.5 rounded-full font-label-md text-label-md transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface" data-filter="closed">
+        Full / Closed
+      </button>
+</div>
+</section>
+<!-- Live Feedback Notification Toast (Hidden by default) -->
+<div class="fixed top-20 left-4 right-4 z-50 transform -translate-y-16 opacity-0 pointer-events-none transition-all duration-300" id="registration-toast">
+<div class="bg-surface-container-lowest text-on-surface shadow-2xl rounded-2xl p-space-sm flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md font-bold text-on-surface" id="toast-title">Registration Confirmed!</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate" id="toast-detail">Your seat is reserved in the system database.</p>
+</div>
+</div>
+</div>
+<!-- Event Cards Feed -->
+<section class="px-gutter-mobile flex flex-col gap-space-md" id="events-feed">
+<!-- Card 1: Hackathon 2025 (Open) -->
+<article class="event-card bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col" data-speed="normal" data-status="open">
+<div class="relative h-40 w-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Young college computer science students collaborating in a high-tech modern campus innovation lab with ambient indigo and violet lighting, glowing laptops, and whiteboard schematics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhteWfb0DUIwb7TEnLle8qVdfKchPI_gJzLCdNj7U0pKhe9uHOtY2HbUFY-GmniiKwX3qVQrzJzKroYWz5WOcnVHvw8ShEppuApdjlWmc0k6GM90kTFr55GYVFryULRjtgCvAEM3yAItOOym_CKdo_JYqtUMBWM3gPuH0BHw5ADOoUNUPMu_kU9KBudYe5UJED-0ovnarsGXZIV_KwxO_xS0Qoi69zSYvp6LyQUQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute top-3 left-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-label-sm font-bold bg-white/95 text-tertiary shadow-sm">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            OPEN REGISTRATION
+          </span>
+</div>
+<div class="absolute bottom-2.5 left-3 right-3 text-white">
+<div class="font-label-sm text-label-sm text-secondary-fixed opacity-95">Engineering • Tech Guild</div>
+<h2 class="font-headline-md text-headline-md font-bold leading-snug drop-shadow-sm">
+            Annual Hackathon 2025: AI &amp; Future Tech
+          </h2>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-sm">
+<!-- Schema Metadata Details -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">person_outline</span>
+              Organizer: c.chen.cs@campus.edu
+            </span>
+<span class="font-bold text-on-surface">38 seats left</span>
+</div>
+<!-- Visual Progress Bar (74%) -->
+<div class="w-full flex flex-col gap-1">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-700" style="width: 74%;"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-outline">
+<span>Capacity: 150 total</span>
+<span class="font-semibold text-primary">112 Claimed (74%)</span>
+</div>
+</div>
+</div>
+<div class="pt-1 flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-1.5 text-body-sm font-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-outline">calendar_month</span>
+<span>Mar 28, 9:00 AM</span>
+</div>
+<button class="register-btn px-4 py-2 bg-primary hover:bg-primary-container active:scale-95 text-on-primary rounded-xl font-label-md text-label-md font-bold transition-all shadow-sm flex items-center gap-1.5" data-event-id="evt-101" data-event-name="Annual Hackathon 2025">
+<span>Register Now</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2: Career Expo (High Demand / Open) -->
+<article class="event-card bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col" data-speed="fast" data-status="open">
+<div class="relative h-40 w-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Vibrant campus convention hall during career expo with recruiter booths, professional students in smart business attire networking and exchanging portfolios under natural glass roof lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnn6j2ycMCHlbrKmjt5iVcIw1xwr8BeVHEgJfMB8J_W60GUQdJZZ8Eu7QcRSYrSLTbf_wfMbEOCUy1pzA7VrNOH5WH_AjMYd4bnlrMsO0Kdan_DPKRROAI2anCXdMEpTK8xjM134X9-KmLEWEWO9Oq2hRMT04p-teOqW35fXXtYbSGYzHo3cdBNh142fwy9fbNunMFFwSzae-ACzcRmIOU5hfaiobprFESz2nRpw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-1.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-label-sm font-bold bg-white/95 text-tertiary shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            OPEN
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-label-sm font-bold bg-amber-500 text-white shadow-sm animate-pulse">
+<span class="material-symbols-outlined text-[13px]">local_fire_department</span>
+            FILLING FAST
+          </span>
+</div>
+<div class="absolute bottom-2.5 left-3 right-3 text-white">
+<div class="font-label-sm text-label-sm text-secondary-fixed opacity-95">Student Affairs • All Majors</div>
+<h2 class="font-headline-md text-headline-md font-bold leading-snug drop-shadow-sm">
+            Campus Career &amp; Internship Expo
+          </h2>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-sm">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">person_outline</span>
+              Organizer: s.miller.dean@campus.edu
+            </span>
+<span class="font-bold text-amber-600">Only 15 seats left!</span>
+</div>
+<!-- Visual Progress Bar (95% amber) -->
+<div class="w-full flex flex-col gap-1">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full rounded-full transition-all duration-700" style="width: 95%;"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-outline">
+<span>Capacity: 300 total</span>
+<span class="font-semibold text-amber-600">285 Claimed (95%)</span>
+</div>
+</div>
+</div>
+<div class="pt-1 flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-1.5 text-body-sm font-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-outline">calendar_month</span>
+<span>Apr 02, 10:00 AM</span>
+</div>
+<button class="register-btn px-4 py-2 bg-primary hover:bg-primary-container active:scale-95 text-on-primary rounded-xl font-label-md text-label-md font-bold transition-all shadow-sm flex items-center gap-1.5" data-event-id="evt-102" data-event-name="Campus Career &amp; Internship Expo">
+<span>Register Now</span>
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 3: Robotics Workshop (Closed / Full) -->
+<article class="event-card bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm opacity-90 flex flex-col" data-speed="normal" data-status="closed">
+<div class="relative h-40 w-full overflow-hidden filter grayscale-[40%]">
+<img class="w-full h-full object-cover" data-alt="Engineering workbench with robotic rover mechanisms, small motors, wiring, sensors, and miniature electronics in a university STEM laboratory." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXeksTBImwdNvIgk-QWwvAEyjqGj4P0I9Je0IoeekWRb3u8e9jGnUR6te2O35d9RLPJ3Ht0MPXUFZ-HGMPtcEWpcr8LldnWQX8R7CGcugo1w_NTAWxKEE0qLXIF22fqs9Zg7feX-ae7WVh60Rys672mCmHdkwfwOMgRgtaNK9iNSI5deCcuMIwApiGi2ijsxmf7ojM_7eI-HAIedDOffNXf2N6xRhYwHZfAWj5mA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
+<div class="absolute top-3 left-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-label-sm font-bold bg-error-container text-on-error-container shadow-sm">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+            FULL • CLOSED
+          </span>
+</div>
+<div class="absolute bottom-2.5 left-3 right-3 text-white">
+<div class="font-label-sm text-label-sm text-secondary-fixed opacity-95">Robotics Club • Lab 4B</div>
+<h2 class="font-headline-md text-headline-md font-bold leading-snug drop-shadow-sm">
+            Robotics Workshop: Autonomous Rovers
+          </h2>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-sm bg-surface-container-low/40">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-outline">person_outline</span>
+              Organizer: d.vance.eng@campus.edu
+            </span>
+<span class="font-bold text-error">0 seats remaining</span>
+</div>
+<!-- Visual Progress Bar (100% full rose/error) -->
+<div class="w-full flex flex-col gap-1">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-error h-full rounded-full transition-all duration-700" style="width: 100%;"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-outline">
+<span>Capacity: 40 total</span>
+<span class="font-semibold text-error">40 Claimed (100%)</span>
+</div>
+</div>
+</div>
+<div class="pt-1 flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-1.5 text-body-sm font-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-outline">calendar_month</span>
+<span>Apr 05, 1:30 PM</span>
+</div>
+<button class="px-4 py-2 bg-surface-container-high text-outline rounded-xl font-label-md text-label-md font-bold cursor-not-allowed flex items-center gap-1.5" disabled="">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span>Full / Closed</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 4: Music Festival (Open) -->
+<article class="event-card bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col" data-speed="normal" data-status="open">
+<div class="relative h-40 w-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Outdoor university quad green amphitheater during a vibrant spring sunset festival with acoustic stage, fairy lights, student crowds sitting on picnic blankets and cheering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeH0mRWY_FgoOYcbBFNqLTN9OMWGB4N6KIzcf9VWkQiTjBLus6mbQupOklI7-gPyqq1ZPscWxsvX4znliowdIWhd1IMyPilUwOwb0rCD92c_QB-44rUYIEMREPxmwAoSdIz2qrFRXfyiv3BQYxLCJVyEQHsSJSNZO4wv0VQyLXpKzeI0Zx6Tpz2rm__ku2OBPbAMModivlcYnSNI9k2IAMyZpS6rg9I9fJGTVa2w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute top-3 left-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-label-sm font-bold bg-white/95 text-tertiary shadow-sm">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            OPEN REGISTRATION
+          </span>
+</div>
+<div class="absolute bottom-2.5 left-3 right-3 text-white">
+<div class="font-label-sm text-label-sm text-secondary-fixed opacity-95">Student Union • Campus Amphitheater</div>
+<h2 class="font-headline-md text-headline-md font-bold leading-snug drop-shadow-sm">
+            Spring Music &amp; Arts Festival
+          </h2>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-space-sm">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1 text-on-surface font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">person_outline</span>
+              Organizer: s.miller.dean@campus.edu
+            </span>
+<span class="font-bold text-on-surface">190 seats remaining</span>
+</div>
+<!-- Visual Progress Bar (62% purple/indigo) -->
+<div class="w-full flex flex-col gap-1">
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-700" style="width: 62%;"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-outline">
+<span>Capacity: 500 total</span>
+<span class="font-semibold text-primary">310 Claimed (62%)</span>
+</div>
+</div>
+</div>
+<div class="pt-1 flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-1.5 text-body-sm font-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-outline">calendar_month</span>
+<span>Apr 12, 4:00 PM</span>
+</div>
+<button class="register-btn px-4 py-2 bg-primary hover:bg-primary-container active:scale-95 text-on-primary rounded-xl font-label-md text-label-md font-bold transition-all shadow-sm flex items-center gap-1.5" data-event-id="evt-104" data-event-name="Spring Music &amp; Arts Festival">
+<span>Register Now</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Clever Empty State Box (Dynamic visibility) -->
+<div class="hidden bg-surface-container-low rounded-2xl p-space-lg text-center flex-col items-center justify-center gap-3" id="empty-state-box">
+<div class="w-14 h-14 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">search_off</span>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">No events matched</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[260px]">
+          We couldn't find anything matching your current search or filter criteria.
+        </p>
+</div>
+<button class="px-4 py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold shadow-sm" id="reset-filters-btn">
+        Reset All Filters
+      </button>
+</div>
+</section>
+<!-- Role Switcher Bottom Drawer Modal -->
+<div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex flex-col justify-end opacity-0 pointer-events-none transition-opacity duration-200" id="switch-user-modal">
+<div class="bg-surface-container-lowest rounded-t-3xl p-space-md flex flex-col gap-space-md shadow-2xl transform translate-y-full transition-transform duration-300 max-h-[751px] overflow-y-auto">
+<!-- Drawer Handle & Header -->
+<div class="flex flex-col items-center gap-2">
+<div class="w-12 h-1.5 rounded-full bg-surface-container-highest"></div>
+<div class="w-full flex items-center justify-between pt-1">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Switch Active Persona</span>
+<span class="font-body-sm text-body-sm text-outline">Test role privileges against PostgreSQL schema</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-outline hover:text-on-surface" id="close-modal-btn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Persona List -->
+<div class="flex flex-col gap-2">
+<!-- Alex Turner -->
+<button class="user-persona-btn active w-full p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all flex items-center justify-between text-left group" data-email="alex.turner@campus.edu" data-name="Alex Turner" data-role="student" data-uuid="a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary font-bold flex items-center justify-center text-sm shadow-sm">
+              AT
+            </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Alex Turner</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-label-sm font-bold bg-secondary-container text-on-secondary-container">STUDENT</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline truncate">alex.turner@campus.edu</span>
+</div>
+</div>
+<span class="persona-check material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</button>
+<!-- Maya Patel -->
+<button class="user-persona-btn w-full p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all flex items-center justify-between text-left group" data-email="maya.patel@campus.edu" data-name="Maya Patel" data-role="student" data-uuid="b2c3d4e5-f6a7-8b9c-0d1e-2f3a4b5c6d7e">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary text-white font-bold flex items-center justify-center text-sm shadow-sm">
+              MP
+            </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Maya Patel</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-label-sm font-bold bg-secondary-container text-on-secondary-container">STUDENT</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline truncate">maya.patel@campus.edu</span>
+</div>
+</div>
+<span class="persona-check hidden material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</button>
+<!-- Prof. David Vance -->
+<button class="user-persona-btn w-full p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all flex items-center justify-between text-left group" data-email="d.vance.eng@campus.edu" data-name="Prof. David Vance" data-role="organizer" data-uuid="c3d4e5f6-a7b8-9c0d-1e2f-3a4b5c6d7e8f">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container font-bold flex items-center justify-center text-sm shadow-sm">
+              DV
+            </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Prof. David Vance</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-label-sm font-bold bg-tertiary-fixed text-on-tertiary-fixed">ORGANIZER</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline truncate">d.vance.eng@campus.edu</span>
+</div>
+</div>
+<span class="persona-check hidden material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</button>
+<!-- Dean Sarah Miller -->
+<button class="user-persona-btn w-full p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all flex items-center justify-between text-left group" data-email="s.miller.dean@campus.edu" data-name="Dean Sarah Miller" data-role="organizer" data-uuid="d4e5f6a7-b8c9-0d1e-2f3a-4b5c6d7e8f9a">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary text-white font-bold flex items-center justify-center text-sm shadow-sm">
+              SM
+            </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Dean Sarah Miller</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-label-sm font-bold bg-tertiary-fixed text-on-tertiary-fixed">ORGANIZER</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline truncate">s.miller.dean@campus.edu</span>
+</div>
+</div>
+<span class="persona-check hidden material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</button>
+</div>
+<div class="p-3 bg-surface-container-low rounded-xl text-center">
+<p class="font-label-sm text-label-sm text-outline">Selecting an organizer role enables host creation privileges in the schema.</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function initDashboard() {
+    const searchInput = document.getElementById('search-input');
+    const clearSearchBtn = document.getElementById('clear-search-btn');
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const eventCards = document.querySelectorAll('.event-card');
+    const emptyState = document.getElementById('empty-state-box');
+    const resetFiltersBtn = document.getElementById('reset-filters-btn');
+
+    const switchModal = document.getElementById('switch-user-modal');
+    const triggerModalBtn = document.getElementById('trigger-switch-modal');
+    const topBarSwitchBtn = document.getElementById('switch-user-btn');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const personaBtns = document.querySelectorAll('.user-persona-btn');
+    const toast = document.getElementById('registration-toast');
+    const toastTitle = document.getElementById('toast-title');
+    const toastDetail = document.getElementById('toast-detail');
+
+    let currentFilter = 'all';
+
+    function filterEvents() {
+      const query = (searchInput.value || '').trim().toLowerCase();
+      let visibleCount = 0;
+
+      eventCards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        const status = card.getAttribute('data-status');
+        const speed = card.getAttribute('data-speed');
+
+        let matchesSearch = title.includes(query);
+        let matchesFilter = true;
+
+        if (currentFilter === 'open') {
+          matchesFilter = (status === 'open');
+        } else if (currentFilter === 'fast') {
+          matchesFilter = (status === 'open' && speed === 'fast');
+        } else if (currentFilter === 'closed') {
+          matchesFilter = (status === 'closed');
+        }
+
+        if (matchesSearch && matchesFilter) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (visibleCount === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+      } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+      }
+    }
+
+    // Search events listener
+    searchInput.addEventListener('input', (e) => {
+      if (e.target.value.length > 0) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+      filterEvents();
+    });
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
+      filterEvents();
+      searchInput.focus();
+    });
+
+    // Filter pills listener
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => {
+          p.classList.remove('bg-primary-container', 'text-white', 'font-semibold', 'shadow-sm');
+          p.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+        });
+
+        pill.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+        pill.classList.add('bg-primary-container', 'text-white', 'font-semibold', 'shadow-sm');
+
+        currentFilter = pill.getAttribute('data-filter');
+        filterEvents();
+      });
+    });
+
+    resetFiltersBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
+      currentFilter = 'all';
+      filterPills.forEach((p, idx) => {
+        if (idx === 0) {
+          p.classList.add('bg-primary-container', 'text-white', 'font-semibold', 'shadow-sm');
+          p.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+        } else {
+          p.classList.remove('bg-primary-container', 'text-white', 'font-semibold', 'shadow-sm');
+          p.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+        }
+      });
+      filterEvents();
+    });
+
+    // User persona switcher modal interaction
+    function openModal() {
+      switchModal.classList.remove('opacity-0', 'pointer-events-none');
+      switchModal.classList.add('opacity-100');
+      const drawer = switchModal.querySelector('div');
+      drawer.classList.remove('translate-y-full');
+      drawer.classList.add('translate-y-0');
+    }
+
+    function closeModal() {
+      const drawer = switchModal.querySelector('div');
+      drawer.classList.remove('translate-y-0');
+      drawer.classList.add('translate-y-full');
+      switchModal.classList.remove('opacity-100');
+      switchModal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    if (triggerModalBtn) triggerModalBtn.addEventListener('click', openModal);
+    if (topBarSwitchBtn) topBarSwitchBtn.addEventListener('click', openModal);
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+    switchModal.addEventListener('click', (e) => {
+      if (e.target === switchModal) closeModal();
+    });
+
+    personaBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        personaBtns.forEach(b => {
+          b.querySelector('.persona-check').classList.add('hidden');
+        });
+        btn.querySelector('.persona-check').classList.remove('hidden');
+
+        const userName = btn.getAttribute('data-name');
+        const userEmail = btn.getAttribute('data-email');
+        const userRole = btn.getAttribute('data-role');
+
+        document.getElementById('current-user-name').textContent = userName;
+        document.getElementById('current-user-email').textContent = userEmail;
+
+        // Also update shell if present
+        const shellLabel = document.querySelector('#switch-user-btn span.font-label-md');
+        if (shellLabel) {
+          shellLabel.textContent = `${userName.split(' ')[0]} (${userRole.charAt(0).toUpperCase() + userRole.slice(1)})`;
+        }
+
+        closeModal();
+
+        showToast('Active User Updated', `Switched session to ${userName} (${userEmail})`);
+      });
+    });
+
+    // Registration CTA interactive feedback
+    function showToast(title, message) {
+      toastTitle.textContent = title;
+      toastDetail.textContent = message;
+      toast.classList.remove('opacity-0', '-translate-y-16', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', '-translate-y-16', 'pointer-events-none');
+      }, 3400);
+    }
+
+    const regButtons = document.querySelectorAll('.register-btn');
+    regButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const eventName = this.getAttribute('data-event-name');
+        this.innerHTML = `<span class="material-symbols-outlined text-[16px] animate-spin">progress_activity</span><span>Securing...</span>`;
+        this.classList.add('opacity-80', 'pointer-events-none');
+
+        setTimeout(() => {
+          this.innerHTML = `<span class="material-symbols-outlined text-[16px]">check</span><span>Registered</span>`;
+          this.classList.remove('bg-primary', 'hover:bg-primary-container', 'opacity-80');
+          this.classList.add('bg-tertiary', 'text-white');
+          showToast('Ticket Confirmed!', `You are successfully registered for "${eventName}".`);
+        }, 650);
+      });
+    });
+
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-bold"><div class="h-16 px-space-xs grid grid-cols-4 items-center"><a aria-current="page" class="flex flex-col items-center justify-center min-h-[44px] gap-0.5 transition-colors text-primary font-bold" data-path="explore-events" href="#"><span class="material-symbols-outlined text-[24px]">explore</span><span class="font-label-sm text-label-sm leading-none">Explore</span></a><a class="flex flex-col items-center justify-center min-h-[44px] gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="my-registrations" href="#"><span class="material-symbols-outlined text-[24px]">confirmation_number</span><span class="font-label-sm text-label-sm leading-none">Tickets</span></a><a class="flex flex-col items-center justify-center min-h-[44px] gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="organizer-dashboard" href="#"><span class="material-symbols-outlined text-[24px]">dashboard</span><span class="font-label-sm text-label-sm leading-none">Manage</span></a><a class="flex flex-col items-center justify-center min-h-[44px] gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="create-event" href="#"><span class="material-symbols-outlined text-[24px]">add_circle</span><span class="font-label-sm text-label-sm leading-none">Create</span></a></div></nav></body></html>

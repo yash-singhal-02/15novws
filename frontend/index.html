@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="Discover campus events and manage your registrations with Campus Pulse." />
+  <title>Campus Pulse | Events for campus life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./personas.css" />
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#events" aria-label="Campus Pulse home"><span class="brand-mark">C</span><span>Campus<span class="brand-light">Pulse</span></span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#events" data-nav="events">Explore events</a>
+      <a href="#registrations" data-nav="registrations">My registrations</a>
+      <a href="#organizer" data-nav="organizer">Organizer</a>
+    </nav>
+    <button class="user-chip" id="user-menu" type="button"><span class="avatar">U</span><span id="user-label">Set user ID</span><span aria-hidden="true">⌄</span></button>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="live-dot"></span> YOUR CAMPUS, IN MOTION</span>
+        <h1>Make room for<br /><span>what’s happening.</span></h1>
+        <p>Find your people, discover something new, and save your spot at the events shaping campus life.</p>
+        <a class="button button-primary" href="#events">Explore events <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-card card-back">✦<small>MAKE IT<br />HAPPEN</small></div><div class="art-card card-front"><span>THIS WEEK</span><b>Find your<br />next thing.</b><i>Campus is calling ↗</i></div><div class="art-spark spark-one">✳</div><div class="art-spark spark-two">✦</div></div>
+      <div class="hero-foot"><span>01 — DISCOVER</span><span>EVENTS MADE FOR YOU</span><span>SCROLL TO EXPLORE ↓</span></div>
+    </section>
+
+    <section class="content-section" id="events">
+      <div class="section-heading"><div><span class="eyebrow purple-eyebrow">THE CAMPUS CALENDAR</span><h2>Find your next <em>favorite.</em></h2><p class="section-intro">Good people. Great ideas. Your next story starts here.</p></div><button class="button button-outline" id="refresh-events" type="button">↻ <span>Refresh events</span></button></div>
+      <div class="toolbar"><label class="search-box"><span aria-hidden="true">⌕</span><input id="event-search" type="search" placeholder="Search events..." aria-label="Search events" /></label><div class="filter-chips" id="status-filters"><button class="filter-chip active" data-filter="all" type="button">All events</button><button class="filter-chip" data-filter="open" type="button">Open</button><button class="filter-chip" data-filter="closed" type="button">Closed</button></div></div>
+      <div id="event-status" class="notice" role="status" hidden></div>
+      <div class="event-grid" id="event-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="content-section registrations-section" id="registrations">
+      <div class="section-heading"><div><span class="eyebrow purple-eyebrow">YOUR PLANS</span><h2>My <em>registrations.</em></h2><p class="section-intro">All the events you’ve saved, in one place.</p></div><button class="button button-outline" id="refresh-registrations" type="button">↻ <span>Sync registrations</span></button></div>
+      <div class="inline-hint" id="registrations-hint">Add your user UUID with the button in the top right to load your registrations.</div>
+      <div id="registration-status" class="notice" role="status" hidden></div>
+      <div class="registration-grid" id="registration-grid"></div>
+    </section>
+
+    <section class="organizer-section" id="organizer">
+      <div class="organizer-copy"><span class="eyebrow">FOR THE PEOPLE WHO MAKE IT HAPPEN</span><h2>Keep your<br />community <em>close.</em></h2><p>See who’s coming to your events. Attendee lists are available to the event’s organizer.</p><button class="button button-white" id="load-organizer-events" type="button">View attendee lists <span aria-hidden="true">↗</span></button></div>
+      <div class="organizer-panel"><div class="panel-top"><span>ORGANIZER TOOLS</span><span class="panel-icon">↗</span></div><div class="panel-stat"><b id="organizer-event-count">—</b><span>events to manage</span></div><div class="panel-rule"></div><p>Attendee lists are private to the event organizer. Select an event below to view its registrations.</p><div id="organizer-status" class="notice notice-dark" role="status" hidden></div><div id="organizer-events" class="organizer-events"></div></div>
+    </section>
+    <footer><a class="brand footer-brand" href="#events"><span class="brand-mark">C</span><span>Campus<span class="brand-light">Pulse</span></span></a><span>Made for campus life.</span><a href="#events">Back to top ↑</a></footer>
+  </main>
+
+  <dialog id="event-dialog" class="event-dialog"><button class="dialog-close" id="close-dialog" aria-label="Close event details" type="button">×</button><div id="dialog-content"></div></dialog>
+  <dialog id="user-dialog" class="user-dialog"><button class="dialog-close" id="close-user-dialog" aria-label="Close" type="button">×</button><span class="eyebrow purple-eyebrow">SWITCH PERSONA</span><h2>Who’s browsing?</h2><p>Save people once, then switch between their event registrations from the top bar. Your selections stay in this browser.</p><div class="persona-list" id="persona-list"></div><button class="organizer-shortcut" id="add-organizer-persona" type="button" hidden>＋ Add the event organizer from the API</button><form id="user-form"><label for="user-name-input">Add a person</label><input id="user-name-input" name="userName" type="text" autocomplete="name" placeholder="Name, e.g. Alex" required /><label for="user-id-input">User UUID <span>(one-time setup)</span></label><input id="user-id-input" name="userId" type="text" autocomplete="off" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" required /><div class="form-actions"><button class="button button-outline" id="clear-user" type="button">Clear selection</button><button class="button button-primary" type="submit">Save person</button></div></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

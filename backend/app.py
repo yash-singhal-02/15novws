@@ -9,6 +9,20 @@ load_dotenv()
 
 app = Flask(__name__)
 
+@app.after_request
+def add_cors_headers(response):
+    allowed_origins = {origin.strip() for origin in os.environ.get("CORS_ALLOWED_ORIGINS", "*").split(",")}
+    request_origin = request.headers.get("Origin")
+    if "*" in allowed_origins:
+        response.headers["Access-Control-Allow-Origin"] = "*"
+    elif request_origin in allowed_origins:
+        response.headers["Access-Control-Allow-Origin"] = request_origin
+        response.headers.add("Vary", "Origin")
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
+    response.headers["Access-Control-Max-Age"] = "600"
+    return response
+
 supabase: Client = create_client(
     os.environ["SUPABASE_URL"],
     os.environ["SUPABASE_PUBLISHABLE_KEY"],

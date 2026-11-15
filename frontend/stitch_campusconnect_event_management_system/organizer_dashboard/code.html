@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'inverse-on-surface': '#eaf1ff', 'on-tertiary-fixed': '#002113', 'surface-container-high': '#dce9ff', 'outline-variant': '#c7c4d8', 'primary-container': '#4f46e5', 'inverse-surface': '#213145', 'secondary-container': '#dae2fd', 'tertiary': '#005338', 'outline': '#777587', 'on-secondary-fixed-variant': '#3f465c', 'secondary-fixed-dim': '#bec6e0', 'tertiary-fixed': '#6ffbbe', 'surface-bright': '#f8f9ff', 'secondary': '#565e74', 'on-secondary-fixed': '#131b2e', 'surface-container-lowest': '#ffffff', 'surface-tint': '#4d44e3', 'on-background': '#0b1c30', 'on-secondary-container': '#5c647a', 'primary-fixed': '#e2dfff', 'on-error-container': '#93000a', 'surface-variant': '#d3e4fe', 'surface-container-highest': '#d3e4fe', 'surface-container': '#e5eeff', 'secondary-fixed': '#dae2fd', 'primary': '#3525cd', 'surface': '#f8f9ff', 'on-secondary': '#ffffff', 'on-primary': '#ffffff', 'on-tertiary': '#ffffff', 'on-tertiary-container': '#67f4b7', 'surface-container-low': '#eff4ff', 'error': '#ba1a1a', 'surface-dim': '#cbdbf5', 'on-tertiary-fixed-variant': '#005236', 'on-surface': '#0b1c30', 'tertiary-container': '#006e4b', 'inverse-primary': '#c3c0ff', 'on-primary-container': '#dad7ff', 'on-error': '#ffffff', 'primary-fixed-dim': '#c3c0ff', 'on-primary-fixed': '#0f0069', 'background': '#f8f9ff', 'tertiary-fixed-dim': '#4edea3', 'on-primary-fixed-variant': '#3323cc', 'on-surface-variant': '#464555', 'error-container': '#ffdad6' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'gutter': '1.5rem', 'margin': '2rem', 'space-md': '1rem', 'margin-mobile': '1rem', 'space-xl': '2.5rem', 'space-lg': '1.5rem', 'gutter-mobile': '1rem', 'space-xs': '0.25rem', 'space-sm': '0.5rem' }, 'fontFamily': { 'body-lg': ['Inter'], 'label-sm': ['Plus Jakarta Sans'], 'headline-xl-mobile': ['Plus Jakarta Sans'], 'label-lg': ['Plus Jakarta Sans'], 'headline-md': ['Plus Jakarta Sans'], 'headline-xl': ['Plus Jakarta Sans'], 'display-lg-mobile': ['Plus Jakarta Sans'], 'body-sm': ['Inter'], 'label-md': ['Plus Jakarta Sans'], 'display-lg': ['Plus Jakarta Sans'], 'headline-lg': ['Plus Jakarta Sans'], 'body-md': ['Inter'] }, 'fontSize': { 'body-lg': ['1.125rem', { 'lineHeight': '1.6', 'letterSpacing': '-0.01em', 'fontWeight': '400' }], 'label-sm': ['0.6875rem', { 'lineHeight': '1.15', 'letterSpacing': '0.04em', 'fontWeight': '700' }], 'headline-xl-mobile': ['1.75rem', { 'lineHeight': '1.25', 'letterSpacing': '-0.02em', 'fontWeight': '700' }], 'label-lg': ['0.875rem', { 'lineHeight': '1.25', 'letterSpacing': '-0.005em', 'fontWeight': '600' }], 'headline-md': ['1.25rem', { 'lineHeight': '1.35', 'letterSpacing': '-0.015em', 'fontWeight': '600' }], 'headline-xl': ['2.25rem', { 'lineHeight': '1.2', 'letterSpacing': '-0.025em', 'fontWeight': '700' }], 'display-lg-mobile': ['2.25rem', { 'lineHeight': '1.2', 'letterSpacing': '-0.025em', 'fontWeight': '800' }], 'body-sm': ['0.8125rem', { 'lineHeight': '1.5', 'letterSpacing': '0', 'fontWeight': '400' }], 'label-md': ['0.75rem', { 'lineHeight': '1.2', 'letterSpacing': '0.02em', 'fontWeight': '600' }], 'display-lg': ['3rem', { 'lineHeight': '1.15', 'letterSpacing': '-0.03em', 'fontWeight': '800' }], 'headline-lg': ['1.5rem', { 'lineHeight': '1.3', 'letterSpacing': '-0.02em', 'fontWeight': '700' }], 'body-md': ['0.9375rem', { 'lineHeight': '1.55', 'letterSpacing': '-0.005em', 'fontWeight': '400' }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-[#0F172A]/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-2"><div class="flex items-center gap-2 min-w-0"><img alt="CampusConnect Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBjnOI7pQKP1DW_O46teGcdaiJww82zEfOCL7cqSS3MNcWrJnBmL-yCiAiSia2zUVG_5MLVGHc40rA3NcoRQ1Qmad8xbzjVmaDwFwhOece37dJ4xzojUZQoiikrwpA97hhc6CQjQpQFPAY8W_4qZQ7aqjTevBqRXeLx7tz8fcnZ_A_TVwTSpclXAnAQ5mG8WWboKOQZiLgJ-sp4r8LN1axJH7nenQWte0E_PUoZQPg"/><div class="flex flex-col min-w-0"><span class="font-headline-md text-headline-md font-bold tracking-tight text-white leading-none truncate">CampusConnect</span><span class="font-label-sm text-label-sm text-slate-400 leading-tight truncate">Organizer Dashboard</span></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Switch active demo user role" class="h-11 px-space-sm bg-white/10 hover:bg-white/15 active:scale-95 transition-all rounded-full flex items-center gap-space-xs text-white" id="switch-user-btn"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span><span class="font-label-md text-label-md max-w-[90px] truncate text-slate-100">Alex R. (Student)</span><span class="material-symbols-outlined text-[18px] text-slate-300">swap_horiz</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full">
+<!-- Content Container with mobile responsive padding -->
+<div class="px-gutter-mobile py-space-md flex flex-col gap-space-lg">
+<!-- Active Organizer Profile Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm relative overflow-hidden">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-space-sm">
+<div class="relative shrink-0">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-headline-md text-headline-md font-bold">
+              DV
+            </div>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 rounded-full ring-2 ring-white"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-headline-md text-headline-md font-bold text-on-surface truncate">Prof. David Vance</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-tertiary font-label-sm text-label-sm uppercase font-bold tracking-wider">Organizer</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">d.vance.eng@campus.edu</span>
+<span class="font-label-sm text-label-sm text-outline font-mono truncate">UUID: o4455667...00112233</span>
+</div>
+</div>
+<!-- Role Quick Switch Action -->
+<button class="shrink-0 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-variant active:scale-95 transition-all flex items-center gap-1 text-primary" id="organizer-switch-toggle">
+<span class="material-symbols-outlined text-[18px]">cached</span>
+<span class="font-label-sm text-label-sm font-bold">Student View</span>
+</button>
+</div>
+<!-- Quick Context Micro-banner -->
+<div class="bg-surface-container-low rounded-lg p-2.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">database</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Synced with Supabase schema: <span class="font-mono text-on-surface font-semibold">events</span>, <span class="font-mono text-on-surface font-semibold">registration</span>.
+        </p>
+</div>
+</div>
+<!-- Organizer Console Header & Actions -->
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-headline-xl-mobile text-headline-xl-mobile font-bold text-on-surface leading-tight">Organizer Console</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Live telemetry and event controls</span>
+</div>
+<!-- Primary Action CTA -->
+<button class="px-4 py-2.5 rounded-lg bg-primary hover:bg-primary-container active:scale-95 transition-all text-on-primary shadow-sm flex items-center gap-1.5 shrink-0" id="open-create-modal-btn">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span class="font-label-md text-label-md font-bold">+ New Event</span>
+</button>
+</div>
+<!-- 4-Card KPI Overview Grid -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Metric 1: Total Events -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">Total Events</span>
+<span class="w-7 h-7 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">event</span>
+</span>
+</div>
+<div class="mt-space-sm flex flex-col">
+<span class="font-headline-xl-mobile text-headline-xl-mobile font-bold text-on-surface">5</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Created &amp; Managed</span>
+</div>
+</div>
+<!-- Metric 2: Total Registrations -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">Registrations</span>
+<span class="w-7 h-7 rounded-lg bg-emerald-100 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">group</span>
+</span>
+</div>
+<div class="mt-space-sm flex flex-col">
+<span class="font-headline-xl-mobile text-headline-xl-mobile font-bold text-on-surface">648</span>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">Students Enrolled</span>
+</div>
+</div>
+<!-- Metric 3: Available Seats -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">Available Seats</span>
+<span class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">event_seat</span>
+</span>
+</div>
+<div class="mt-space-sm flex flex-col">
+<span class="font-headline-xl-mobile text-headline-xl-mobile font-bold text-on-surface">152</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Remaining Open</span>
+</div>
+</div>
+<!-- Metric 4: Full Events -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">At Capacity</span>
+<span class="w-7 h-7 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</span>
+</div>
+<div class="mt-space-sm flex flex-col">
+<span class="font-headline-xl-mobile text-headline-xl-mobile font-bold text-on-surface">2</span>
+<span class="font-label-sm text-label-sm text-error font-bold">Closed / Max Cap</span>
+</div>
+</div>
+</div>
+<!-- Inline Quick-Create Drawer / Expansion Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md transition-all" id="create-event-section">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">add_box</span>
+</span>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Deploy New Event</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Inserts row directly into events table</span>
+</div>
+</div>
+<button class="p-1 rounded-full hover:bg-surface-container-high text-on-surface-variant" id="toggle-form-btn">
+<span class="material-symbols-outlined" id="form-chevron">expand_less</span>
+</button>
+</div>
+<form class="flex flex-col gap-space-md" id="new-event-form">
+<!-- Event Title -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md font-bold text-on-surface" for="event-title">Event Title *</label>
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder-outline focus:outline-none focus:bg-surface-container-lowest transition-colors" id="event-title" placeholder="e.g. Quantum Computing Seminar" required="" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Capacity (INT4) -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md font-bold text-on-surface" for="event-capacity">Capacity (INT4) *</label>
+<div class="relative flex items-center">
+<input class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder-outline focus:outline-none focus:bg-surface-container-lowest transition-colors" id="event-capacity" max="1000" min="1" placeholder="100" required="" type="number"/>
+<span class="absolute right-3 font-label-sm text-label-sm text-outline pointer-events-none">seats</span>
+</div>
+</div>
+<!-- Status Select -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md font-bold text-on-surface" for="event-status">Initial Status *</label>
+<div class="relative">
+<select class="w-full h-11 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest appearance-none" id="event-status">
+<option selected="" value="Open">Open</option>
+<option value="Closed">Closed</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-3 text-[18px] text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Supabase Helper Notice -->
+<div class="rounded-lg bg-surface-container-low p-space-sm flex items-start gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">verified_user</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Will assign <code class="font-mono text-primary font-semibold">organizer_id</code> to active user <code class="font-mono text-on-surface font-semibold">d.vance.eng@campus.edu</code>.
+          </p>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-11 rounded-lg bg-primary hover:bg-primary-container active:scale-[0.99] transition-all text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-sm" type="submit">
+<span class="material-symbols-outlined text-[20px]">cloud_upload</span>
+<span>Submit Event to Supabase</span>
+</button>
+</form>
+</div>
+<!-- Section: Your Created Events Management -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Your Created Events</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-bold">3 Live</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Real-time sync</span>
+</div>
+<!-- Event Card 1: Hackathon 2025 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm relative">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-headline-md font-bold text-on-surface line-clamp-1">Annual Hackathon 2025: AI &amp; Future Tech</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">ID: 8fa7b219-c09a-4122</span>
+</div>
+<!-- Status Pill: Open -->
+<span class="shrink-0 px-2.5 py-1 rounded-full bg-emerald-100 text-tertiary font-label-sm text-label-sm font-bold uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Open
+          </span>
+</div>
+<!-- Visual Capacity Progress Bar -->
+<div class="flex flex-col gap-1 mt-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Progress: <strong class="text-on-surface">112 / 150</strong> Filled</span>
+<span class="text-tertiary font-bold">38 seats remaining</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 74.6%;"></div>
+</div>
+</div>
+<!-- Metrics Strip -->
+<div class="grid grid-cols-3 gap-2 bg-surface-container-low rounded-lg p-2 text-center">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Capacity</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">150</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Registered</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">112</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Available</span>
+<span class="font-headline-md text-headline-md font-bold text-tertiary">38</span>
+</div>
+</div>
+<!-- Card Action Controls -->
+<div class="flex items-center justify-between pt-1 gap-2 flex-wrap">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-variant active:scale-95 transition-all text-on-surface font-label-md text-label-md font-bold flex items-center gap-1.5" onclick="toggleRegistrationsModal('Annual Hackathon 2025', 112)">
+<span class="material-symbols-outlined text-[18px] text-primary">group</span>
+<span>View Registrations (112)</span>
+</button>
+<div class="flex items-center gap-1 shrink-0">
+<!-- Edit Button -->
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-variant active:scale-95 transition-all flex items-center justify-center text-on-surface-variant" title="Edit Event">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<!-- Delete Button with Safety Restriction Tooltip / Modal Trigger -->
+<button class="w-8 h-8 rounded-lg bg-error-container/40 hover:bg-error-container active:scale-95 transition-all flex items-center justify-center text-error cursor-not-allowed" onclick="showDeleteBlockedAlert(112)" title="Delete Event">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Safety Notice Badge for Foreign Key constraint -->
+<div class="flex items-center gap-1.5 text-error font-label-sm text-label-sm bg-error-container/30 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[15px] shrink-0">lock</span>
+<span>FK Protected: Cannot delete while 112 active registrations exist.</span>
+</div>
+</div>
+<!-- Event Card 2: Robotics Workshop -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm relative">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-headline-md font-bold text-on-surface line-clamp-1">Robotics Workshop: Autonomous Rovers</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">ID: e531a72d-88bc-4991</span>
+</div>
+<!-- Status Pill: Closed -->
+<span class="shrink-0 px-2.5 py-1 rounded-full bg-error-container text-error font-label-sm text-label-sm font-bold uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+            Closed
+          </span>
+</div>
+<!-- Visual Capacity Progress Bar (Full) -->
+<div class="flex flex-col gap-1 mt-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Capacity Met: <strong class="text-error font-bold">40 / 40</strong> Enrolled</span>
+<span class="text-error font-bold">0 seats remaining</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-error" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Metrics Strip -->
+<div class="grid grid-cols-3 gap-2 bg-surface-container-low rounded-lg p-2 text-center">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Capacity</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">40</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Registered</span>
+<span class="font-headline-md text-headline-md font-bold text-error">40</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Available</span>
+<span class="font-headline-md text-headline-md font-bold text-error">0</span>
+</div>
+</div>
+<!-- Card Action Controls -->
+<div class="flex items-center justify-between pt-1 gap-2 flex-wrap">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-variant active:scale-95 transition-all text-on-surface font-label-md text-label-md font-bold flex items-center gap-1.5" onclick="toggleRegistrationsModal('Robotics Workshop', 40)">
+<span class="material-symbols-outlined text-[18px] text-primary">group</span>
+<span>View 40 Registrations</span>
+</button>
+<div class="flex items-center gap-1 shrink-0">
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-variant active:scale-95 transition-all flex items-center justify-center text-on-surface-variant" title="Edit Event">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-error-container/40 hover:bg-error-container active:scale-95 transition-all flex items-center justify-center text-error cursor-not-allowed" onclick="showDeleteBlockedAlert(40)" title="Delete Event">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-error font-label-sm text-label-sm bg-error-container/30 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[15px] shrink-0">lock</span>
+<span>Event full. Requires archiving or capacity increase to reopen.</span>
+</div>
+</div>
+<!-- Event Card 3: Intro to Web3 (Safe to Delete) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm relative" id="event-card-web3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-headline-md font-bold text-on-surface line-clamp-1">Intro to Web3 &amp; Smart Contracts</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">ID: a209b551-7f99-4c00</span>
+</div>
+<span class="shrink-0 px-2.5 py-1 rounded-full bg-emerald-100 text-tertiary font-label-sm text-label-sm font-bold uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            Open
+          </span>
+</div>
+<!-- Visual Capacity Progress Bar (0%) -->
+<div class="flex flex-col gap-1 mt-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Enrolled: <strong class="text-on-surface font-bold">0 / 60</strong> Students</span>
+<span class="text-tertiary font-bold">All 60 seats available</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 0%;"></div>
+</div>
+</div>
+<!-- Metrics Strip -->
+<div class="grid grid-cols-3 gap-2 bg-surface-container-low rounded-lg p-2 text-center">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Capacity</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">60</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Registered</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface-variant">0</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Available</span>
+<span class="font-headline-md text-headline-md font-bold text-tertiary">60</span>
+</div>
+</div>
+<!-- Card Action Controls -->
+<div class="flex items-center justify-between pt-1 gap-2 flex-wrap">
+<span class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">person_off</span>
+<span>No registrations yet</span>
+</span>
+<div class="flex items-center gap-1 shrink-0">
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-variant active:scale-95 transition-all flex items-center justify-center text-on-surface-variant" title="Edit Event">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<!-- Safe to Delete Active Button -->
+<button class="px-2.5 h-8 rounded-lg bg-error-container hover:bg-red-200 active:scale-95 transition-all flex items-center gap-1 text-error font-label-sm text-label-sm font-bold" onclick="promptSafeDelete('Intro to Web3 &amp; Smart Contracts', 'event-card-web3')" title="Delete Unregistered Event">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>Delete</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-tertiary font-label-sm text-label-sm bg-emerald-50 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[15px] shrink-0">check_circle</span>
+<span>Safe to delete: 0 foreign key dependencies in registration table.</span>
+</div>
+</div>
+</div>
+<!-- Section: Recent Student Registrations (Live Feed) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Live Registration Stream</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-tertiary font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+          Listening
+        </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Latest real-time records from <code class="font-mono text-primary">registration</code> for events managed by Prof. David Vance.
+      </p>
+<!-- Feed Rows -->
+<div class="flex flex-col gap-2 mt-1">
+<!-- Student 1 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between gap-2">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-bold text-body-sm shrink-0">
+              AT
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">alex.turner@campus.edu</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Annual Hackathon 2025</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-label-sm text-label-sm text-tertiary font-bold">Registered</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">14m ago</span>
+</div>
+</div>
+<!-- Student 2 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between gap-2">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-full bg-secondary-container text-secondary flex items-center justify-center font-bold text-body-sm shrink-0">
+              MP
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">maya.patel@campus.edu</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Robotics Workshop</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-label-sm text-label-sm text-tertiary font-bold">Registered</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">32m ago</span>
+</div>
+</div>
+<!-- Student 3 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between gap-2">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-bold text-body-sm shrink-0">
+              JL
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">j.li.eng@campus.edu</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Annual Hackathon 2025</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-label-sm text-label-sm text-tertiary font-bold">Registered</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">1h 05m ago</span>
+</div>
+</div>
+<!-- Student 4 -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between gap-2">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-bold text-body-sm shrink-0">
+              SG
+            </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">s.gupta9@campus.edu</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Annual Hackathon 2025</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-label-sm text-label-sm text-tertiary font-bold">Registered</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">2h 18m ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Registrations Roster Dialog / Drawer Preview (Modal) -->
+<div class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden items-end sm:items-center justify-center p-0 sm:p-4" id="roster-modal">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-t-2xl sm:rounded-2xl shadow-xl flex flex-col max-h-[751px] overflow-hidden animate-in fade-in duration-200">
+<!-- Modal Header -->
+<div class="p-space-md flex items-center justify-between border-b border-surface-container">
+<div class="flex flex-col min-w-0">
+<span class="font-headline-md text-headline-md font-bold text-on-surface" id="roster-modal-title">Enrolled Students</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant" id="roster-modal-subtitle">Registration database query</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface" onclick="closeRosterModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Search & Filter Inside Drawer -->
+<div class="px-space-md py-space-sm bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-outline">search</span>
+<input class="bg-transparent text-body-sm font-body-sm text-on-surface w-full focus:outline-none placeholder-outline" placeholder="Filter by student email..." type="text"/>
+</div>
+<!-- Registrations Scroll List -->
+<div class="p-space-md flex flex-col gap-2 overflow-y-auto max-h-[442px]">
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-body-sm shrink-0">1</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">alex.turner@campus.edu</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">UUID: 71b3e811-0021</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono shrink-0">Today 10:42 AM</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-body-sm shrink-0">2</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">s.gupta9@campus.edu</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">UUID: 99a12c44-12fe</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono shrink-0">Today 08:31 AM</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-body-sm shrink-0">3</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">k.williams@campus.edu</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">UUID: f0384aa2-65dd</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono shrink-0">Yesterday 18:20</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-body-sm shrink-0">4</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md font-semibold text-on-surface truncate">elena.rostova@campus.edu</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">UUID: e82b1309-8812</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono shrink-0">Yesterday 15:10</span>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between">
+<button class="px-3 py-2 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md font-bold flex items-center gap-1.5 hover:bg-surface-variant active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export CSV</span>
+</button>
+<button class="px-4 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold active:scale-95 transition-all" onclick="closeRosterModal()">
+          Close View
+        </button>
+</div>
+</div>
+</div>
+<!-- Delete Safe Confirmation Dialog Preview -->
+<div class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden items-center justify-center p-4" id="delete-confirm-modal">
+<div class="w-full max-w-sm bg-surface-container-lowest rounded-2xl p-space-lg shadow-xl flex flex-col gap-space-md animate-in fade-in duration-200">
+<div class="w-12 h-12 rounded-full bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">delete_forever</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Delete Event?</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Are you sure you want to remove <strong class="text-on-surface font-semibold" id="delete-event-name"></strong>?
+        </p>
+<p class="font-label-sm text-label-sm text-tertiary mt-1">
+          ✓ Verified 0 active student registrations. This action will permanently remove the record from Supabase.
+        </p>
+</div>
+<div class="flex items-center justify-end gap-2 pt-2">
+<button class="px-4 py-2 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md font-bold hover:bg-surface-variant active:scale-95 transition-all" onclick="closeDeleteConfirmModal()">
+          Cancel
+        </button>
+<button class="px-4 py-2 rounded-lg bg-error text-on-error font-label-md text-label-md font-bold hover:bg-red-700 active:scale-95 transition-all shadow-sm" onclick="executeSafeDelete()">
+          Confirm Delete
+        </button>
+</div>
+</div>
+</div>
+<!-- Foreign Key Delete Blocked Alert Drawer -->
+<div class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden items-center justify-center p-4" id="delete-blocked-modal">
+<div class="w-full max-w-sm bg-surface-container-lowest rounded-2xl p-space-lg shadow-xl flex flex-col gap-space-md animate-in fade-in duration-200">
+<div class="w-12 h-12 rounded-full bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">shield</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Action Blocked by Database</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          This event has <strong class="text-error font-bold" id="blocked-reg-count">112</strong> confirmed student registration records linked via Foreign Key (<code class="font-mono text-xs">registration.event_id</code>).
+        </p>
+<div class="rounded-lg bg-surface-container-low p-2.5 mt-2 flex items-start gap-2">
+<span class="material-symbols-outlined text-[18px] text-outline shrink-0">info</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+            To remove this event, cancel the registrations or mark status as <strong>'Closed'</strong> instead.
+          </span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 pt-2">
+<button class="w-full py-2.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold active:scale-95 transition-all text-center" onclick="closeDeleteBlockedModal()">
+          Understood
+        </button>
+</div>
+</div>
+</div>
+<script>
+    // Toggle Create Event Form Accordion
+    const toggleFormBtn = document.getElementById('toggle-form-btn');
+    const newEventForm = document.getElementById('new-event-form');
+    const formChevron = document.getElementById('form-chevron');
+    const openCreateModalBtn = document.getElementById('open-create-modal-btn');
+    const createEventSection = document.getElementById('create-event-section');
+
+    let formExpanded = true;
+    function updateFormVisibility() {
+      if (formExpanded) {
+        newEventForm.classList.remove('hidden');
+        formChevron.textContent = 'expand_less';
+      } else {
+        newEventForm.classList.add('hidden');
+        formChevron.textContent = 'expand_more';
+      }
+    }
+
+    if (toggleFormBtn) {
+      toggleFormBtn.addEventListener('click', () => {
+        formExpanded = !formExpanded;
+        updateFormVisibility();
+      });
+    }
+
+    if (openCreateModalBtn) {
+      openCreateModalBtn.addEventListener('click', () => {
+        formExpanded = true;
+        updateFormVisibility();
+        createEventSection.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('event-title').focus();
+      });
+    }
+
+    // New Event Form Submission Feedback
+    if (newEventForm) {
+      newEventForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const title = document.getElementById('event-title').value;
+        const capacity = document.getElementById('event-capacity').value;
+        const status = document.getElementById('event-status').value;
+        
+        // Visual submission feedback
+        alert(`Supabase RPC Mock: Successfully created event "${title}" with capacity ${capacity} (${status}) for organizer d.vance.eng@campus.edu!`);
+        newEventForm.reset();
+      });
+    }
+
+    // Registration Roster Modal Handlers
+    function toggleRegistrationsModal(eventTitle, count) {
+      document.getElementById('roster-modal-title').textContent = `${eventTitle}`;
+      document.getElementById('roster-modal-subtitle').textContent = `Showing all ${count} student registrations`;
+      const modal = document.getElementById('roster-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeRosterModal() {
+      const modal = document.getElementById('roster-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // Delete Safe vs Blocked Handlers
+    let targetCardIdToDelete = null;
+
+    function promptSafeDelete(eventName, cardId) {
+      targetCardIdToDelete = cardId;
+      document.getElementById('delete-event-name').textContent = eventName;
+      const modal = document.getElementById('delete-confirm-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeDeleteConfirmModal() {
+      const modal = document.getElementById('delete-confirm-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function executeSafeDelete() {
+      if (targetCardIdToDelete) {
+        const el = document.getElementById(targetCardIdToDelete);
+        if (el) {
+          el.style.opacity = '0';
+          el.style.transform = 'scale(0.95)';
+          el.style.transition = 'all 0.3s ease';
+          setTimeout(() => el.remove(), 300);
+        }
+      }
+      closeDeleteConfirmModal();
+    }
+
+    function showDeleteBlockedAlert(count) {
+      document.getElementById('blocked-reg-count').textContent = count;
+      const modal = document.getElementById('delete-blocked-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeDeleteBlockedModal() {
+      const modal = document.getElementById('delete-blocked-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // Role switch demonstration trigger
+    const switchToggle = document.getElementById('organizer-switch-toggle');
+    if (switchToggle) {
+      switchToggle.addEventListener('click', () => {
+        // Trigger the shell switch user button if present
+        const shellSwitchBtn = document.getElementById('switch-user-btn');
+        if (shellSwitchBtn) {
+          shellSwitchBtn.click();
+        } else {
+          alert("Switching active persona to Alex R. (Student)");
+        }
+      });
+    }
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-bold"><div class="h-16 px-space-xs grid grid-cols-4 items-center"><a class="flex flex-col items-center justify-center min-h-[44px] gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="explore-events" href="#"><span class="material-symbols-outlined text-[24px]">explore</span><span class="font-label-sm text-label-sm leading-none">Explore</span></a><a class="flex flex-col items-center justify-center min-h-[44px] gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="my-registrations" href="#"><span class="material-symbols-outlined text-[24px]">confirmation_number</span><span class="font-label-sm text-label-sm leading-none">Tickets</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-h-[44px] gap-0.5 transition-colors text-primary font-bold" data-path="organizer-dashboard" href="#"><span class="material-symbols-outlined text-[24px]">dashboard</span><span class="font-label-sm text-label-sm leading-none">Manage</span></a><a class="flex flex-col items-center justify-center min-h-[44px] gap-0.5 text-on-surface-variant hover:text-on-surface transition-colors" data-path="create-event" href="#"><span class="material-symbols-outlined text-[24px]">add_circle</span><span class="font-label-sm text-label-sm leading-none">Create</span></a></div></nav></body></html>

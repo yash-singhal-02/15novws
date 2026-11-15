@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'inverse-on-surface': '#eaf1ff', 'on-tertiary-fixed': '#002113', 'surface-container-high': '#dce9ff', 'outline-variant': '#c7c4d8', 'primary-container': '#4f46e5', 'inverse-surface': '#213145', 'secondary-container': '#dae2fd', 'tertiary': '#005338', 'outline': '#777587', 'on-secondary-fixed-variant': '#3f465c', 'secondary-fixed-dim': '#bec6e0', 'tertiary-fixed': '#6ffbbe', 'surface-bright': '#f8f9ff', 'secondary': '#565e74', 'on-secondary-fixed': '#131b2e', 'surface-container-lowest': '#ffffff', 'surface-tint': '#4d44e3', 'on-background': '#0b1c30', 'on-secondary-container': '#5c647a', 'primary-fixed': '#e2dfff', 'on-error-container': '#93000a', 'surface-variant': '#d3e4fe', 'surface-container-highest': '#d3e4fe', 'surface-container': '#e5eeff', 'secondary-fixed': '#dae2fd', 'primary': '#3525cd', 'surface': '#f8f9ff', 'on-secondary': '#ffffff', 'on-primary': '#ffffff', 'on-tertiary': '#ffffff', 'on-tertiary-container': '#67f4b7', 'surface-container-low': '#eff4ff', 'error': '#ba1a1a', 'surface-dim': '#cbdbf5', 'on-tertiary-fixed-variant': '#005236', 'on-surface': '#0b1c30', 'tertiary-container': '#006e4b', 'inverse-primary': '#c3c0ff', 'on-primary-container': '#dad7ff', 'on-error': '#ffffff', 'primary-fixed-dim': '#c3c0ff', 'on-primary-fixed': '#0f0069', 'background': '#f8f9ff', 'tertiary-fixed-dim': '#4edea3', 'on-primary-fixed-variant': '#3323cc', 'on-surface-variant': '#464555', 'error-container': '#ffdad6' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'gutter': '1.5rem', 'margin': '2rem', 'space-md': '1rem', 'margin-mobile': '1rem', 'space-xl': '2.5rem', 'space-lg': '1.5rem', 'gutter-mobile': '1rem', 'space-xs': '0.25rem', 'space-sm': '0.5rem' }, 'fontFamily': { 'body-lg': ['Inter'], 'label-sm': ['Plus Jakarta Sans'], 'headline-xl-mobile': ['Plus Jakarta Sans'], 'label-lg': ['Plus Jakarta Sans'], 'headline-md': ['Plus Jakarta Sans'], 'headline-xl': ['Plus Jakarta Sans'], 'display-lg-mobile': ['Plus Jakarta Sans'], 'body-sm': ['Inter'], 'label-md': ['Plus Jakarta Sans'], 'display-lg': ['Plus Jakarta Sans'], 'headline-lg': ['Plus Jakarta Sans'], 'body-md': ['Inter'] }, 'fontSize': { 'body-lg': ['1.125rem', { 'lineHeight': '1.6', 'letterSpacing': '-0.01em', 'fontWeight': '400' }], 'label-sm': ['0.6875rem', { 'lineHeight': '1.15', 'letterSpacing': '0.04em', 'fontWeight': '700' }], 'headline-xl-mobile': ['1.75rem', { 'lineHeight': '1.25', 'letterSpacing': '-0.02em', 'fontWeight': '700' }], 'label-lg': ['0.875rem', { 'lineHeight': '1.25', 'letterSpacing': '-0.005em', 'fontWeight': '600' }], 'headline-md': ['1.25rem', { 'lineHeight': '1.35', 'letterSpacing': '-0.015em', 'fontWeight': '600' }], 'headline-xl': ['2.25rem', { 'lineHeight': '1.2', 'letterSpacing': '-0.025em', 'fontWeight': '700' }], 'display-lg-mobile': ['2.25rem', { 'lineHeight': '1.2', 'letterSpacing': '-0.025em', 'fontWeight': '800' }], 'body-sm': ['0.8125rem', { 'lineHeight': '1.5', 'letterSpacing': '0', 'fontWeight': '400' }], 'label-md': ['0.75rem', { 'lineHeight': '1.2', 'letterSpacing': '0.02em', 'fontWeight': '600' }], 'display-lg': ['3rem', { 'lineHeight': '1.15', 'letterSpacing': '-0.03em', 'fontWeight': '800' }], 'headline-lg': ['1.5rem', { 'lineHeight': '1.3', 'letterSpacing': '-0.02em', 'fontWeight': '700' }], 'body-md': ['0.9375rem', { 'lineHeight': '1.55', 'letterSpacing': '-0.005em', 'fontWeight': '400' }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-[#0F172A]/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-2"><div class="flex items-center gap-space-xs"><button aria-label="Go back" class="w-11 h-11 flex items-center justify-center text-white hover:bg-white/10 rounded-full transition-colors active:scale-95 shrink-0" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><img alt="CampusConnect Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBjnOI7pQKP1DW_O46teGcdaiJww82zEfOCL7cqSS3MNcWrJnBmL-yCiAiSia2zUVG_5MLVGHc40rA3NcoRQ1Qmad8xbzjVmaDwFwhOece37dJ4xzojUZQoiikrwpA97hhc6CQjQpQFPAY8W_4qZQ7aqjTevBqRXeLx7tz8fcnZ_A_TVwTSpclXAnAQ5mG8WWboKOQZiLgJ-sp4r8LN1axJH7nenQWte0E_PUoZQPg"/><span class="font-headline-md text-headline-md font-bold text-white leading-none truncate max-w-[130px]">Event Details</span></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Switch active demo user role" class="h-11 px-space-sm bg-white/10 hover:bg-white/15 active:scale-95 transition-all rounded-full flex items-center gap-space-xs text-white" id="switch-user-btn-stack"><span class="w-2 h-2 rounded-full bg-emerald-400"></span><span class="font-label-md text-label-md max-w-[80px] truncate text-slate-100">Switch</span><span class="material-symbols-outlined text-[18px] text-slate-300">swap_horiz</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-space-lg bg-surface"><div class="flex flex-col w-full px-gutter-mobile gap-space-md">
+<!-- Interactive Sub-header Actions Bar -->
+<div class="flex items-center justify-between py-space-xs">
+<div class="flex items-center gap-space-xs min-w-0">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim shrink-0 animate-ping"></span>
+<span class="font-label-md text-label-md text-secondary truncate">Live Registration Desk</span>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button aria-label="Share Event Link" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-transform active:scale-90" id="share-btn">
+<span class="material-symbols-outlined text-[19px]">ios_share</span>
+</button>
+<button aria-label="Bookmark Event" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-transform active:scale-90" id="bookmark-btn">
+<span class="material-symbols-outlined text-[19px]">bookmark_border</span>
+</button>
+</div>
+</div>
+<!-- Event Header Hero Card -->
+<div class="relative w-full rounded-2xl bg-surface-container-lowest shadow-md overflow-hidden flex flex-col">
+<!-- Image Media Container with Scrim & Badges -->
+<div class="relative w-full h-44 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Futuristic student hackathon auditorium with young diverse university programmers coding on glowing laptops with blue and violet ambient neon lighting, futuristic UI projections on big screens, modern academic architectural glass backdrop, cinematic volumetric light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxHS5c7S46xDNaXBSqw5qtZKfnms4ZLD5t1SKTo8kwwM6KtXxEwcms5XPElh3qPEDyFjSrdMkRlaa_sMtC8EoHXkjf5q7kELJRq3g2ZI7veeD__j4vWNeSBM3m5uyDAra8l-5ddR0xuQckwHzDMfQvCiIXxuSD9dpZ3X9_vbRgzntIq3ur0S4ShjEITgnzLJU4RAyuvHl63oIjIVoZMYkwfMylEr6ld325075V3A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/90 via-inverse-surface/30 to-transparent"></div>
+<!-- Top floating badging inside card -->
+<div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-tertiary tracking-wide uppercase font-bold">Open</span>
+</div>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-inverse-surface/80 backdrop-blur-md text-inverse-on-surface">
+<span class="material-symbols-outlined text-[13px] text-tertiary-fixed-dim">verified</span>
+<span class="font-label-sm text-label-sm">Official CS Dept</span>
+</div>
+</div>
+<!-- ID Pill bottom left of image banner -->
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+<div class="flex items-center gap-1.5 bg-slate-900/80 backdrop-blur-md px-2.5 py-1 rounded-full shadow-sm max-w-[85%]">
+<span class="material-symbols-outlined text-[14px] text-primary-fixed-dim shrink-0">tag</span>
+<span class="font-label-sm text-label-sm text-slate-200 truncate font-mono">id: e839a2f1-44dc-4b20-91a5-78e235492d11</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-primary-fixed-dim">code</span>
+</div>
+</div>
+<!-- Title & Metadata Details -->
+<div class="p-4 flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm">Annual Tech Fest</span>
+<span class="font-label-sm text-label-sm text-secondary">April 12, 2025 • 09:00 AM</span>
+</div>
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface tracking-tight leading-tight">
+        Annual Hackathon 2025: AI &amp; Future Tech
+      </h1>
+<p class="font-body-sm text-body-sm text-secondary">
+        Collaborate with 150 elite collegiate builders to craft frontier machine learning solutions, win cloud compute credits, and network with leading technology labs.
+      </p>
+</div>
+</div>
+<!-- Real-time Capacity & Registration Analytics Panel -->
+<div class="w-full rounded-2xl bg-surface-container-lowest p-4 shadow-md flex flex-col gap-3.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] text-primary">analytics</span>
+<span class="font-headline-md text-headline-md text-on-surface">Live Seat Telemetry</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container">schema: events.capacity</span>
+</div>
+<!-- 3 Stat Metrics Grid -->
+<div class="grid grid-cols-3 gap-2">
+<!-- Total Capacity -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-2.5">
+<span class="font-label-sm text-label-sm text-secondary">Total</span>
+<span class="font-headline-md text-headline-md text-on-surface mt-0.5 leading-none">150</span>
+<span class="font-body-sm text-body-sm text-secondary mt-1">seats total</span>
+</div>
+<!-- Registered Count -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-2.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">Filled</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+</div>
+<span class="font-headline-md text-headline-md text-primary mt-0.5 leading-none" id="metric-registered">112</span>
+<span class="font-body-sm text-body-sm text-secondary mt-1">students</span>
+</div>
+<!-- Available Remaining -->
+<div class="flex flex-col bg-surface-container-low rounded-xl p-2.5">
+<span class="font-label-sm text-label-sm text-secondary">Available</span>
+<span class="font-headline-md text-headline-md text-tertiary mt-0.5 leading-none" id="metric-available">38</span>
+<span class="font-body-sm text-body-sm text-tertiary mt-1">remaining</span>
+</div>
+</div>
+<!-- Capacity Gauge Progress Bar (74.6% filled) -->
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">groups</span>
+          Occupancy Threshold
+        </span>
+<span class="font-label-md text-label-md text-primary font-bold" id="percent-label">74.6% Filled</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden relative">
+<div class="h-full bg-primary-container rounded-full transition-all duration-700 ease-out" id="progress-bar-fill" style="width: 74.6%;"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-secondary">Query: count(registration where event_id = current)</span>
+<span class="font-label-sm text-label-sm text-amber-600 font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">local_fire_department</span>
+          Fast Selling
+        </span>
+</div>
+</div>
+</div>
+<!-- Organizer Profile Section (Foreign Key relation events.organizer_id -> users.id) -->
+<div class="w-full rounded-2xl bg-surface-container-lowest p-4 shadow-md flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-headline-md text-on-surface">Event Organizer</span>
+<span class="font-label-sm text-label-sm text-secondary">FK events.organizer_id</span>
+</div>
+<div class="flex items-start gap-3 bg-surface-container-low rounded-xl p-3">
+<div class="relative shrink-0">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Professional headshot of a friendly Asian female computer science professor with glasses, warm gentle smile, academic campus hall soft background, natural soft lighting, portrait photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADUDvDLHcEKeOzTZAtQx9xPoCH-GqIPMuAAIgW2cR4rgiLT1RkIj7db04lPd90KapdXYVgScuJ3mEkGUkMx2-cG5xYbrR2A5Fv7yjLuIOncE7n8m5CWJSp3mYON3fwSnORervzgoJvj_NnihBURFuJ-oVnI0Y2rZ8OAf_npsR8ZymWV6sJiccyjxHQZGKtXfvbrlEEWkuU5hcUVFBfTAaaO97Lm5cbR2atpzfSEw"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-1">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Prof. Clara Chen</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold shrink-0">Faculty Host</span>
+</div>
+<span class="font-body-sm text-body-sm text-primary font-medium truncate mt-0.5">c.chen.cs@campus.edu</span>
+<div class="flex items-center gap-1 mt-1.5 text-secondary">
+<span class="material-symbols-outlined text-[14px]">badge</span>
+<span class="font-label-sm text-label-sm font-mono truncate">uuid: u98721fa-12ab-49cd-90ef-331245678901</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Registration Eligibility & Status Check for Current User -->
+<div class="w-full rounded-2xl bg-surface-container-lowest p-4 shadow-md flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-headline-md text-on-surface">Current Student Status</span>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>Student Persona</span>
+</div>
+</div>
+<!-- Active User Card Context -->
+<div class="flex items-center justify-between bg-surface-container-low p-2.5 rounded-xl">
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary text-label-md font-bold shrink-0">
+          AT
+        </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Alex Turner</span>
+<span class="font-body-sm text-body-sm text-secondary truncate">alex.turner@campus.edu</span>
+</div>
+</div>
+<div class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-medium shrink-0" id="user-status-pill">
+        Not Enrolled
+      </div>
+</div>
+<!-- System Pre-flight Validation Checks -->
+<div class="flex flex-col gap-2 pt-1">
+<div class="flex items-center gap-2 text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-tertiary-container" id="check-icon-1">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface flex-1">
+          Duplicate registration check: <strong class="text-tertiary">PASS (Eligible to register)</strong>
+</span>
+</div>
+<div class="flex items-center gap-2 text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-tertiary-container" id="check-icon-2">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface flex-1">
+          Capacity status: <strong class="text-tertiary" id="status-capacity-text">38 seats open</strong>
+</span>
+</div>
+<div class="flex items-center gap-2 text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+<span class="font-body-sm text-body-sm text-secondary flex-1">
+          Role validation: <span class="font-mono text-on-surface">users.role = 'student'</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Primary Interactive Action Hub -->
+<div class="w-full flex flex-col gap-3">
+<!-- Large prominent registration button -->
+<button class="w-full h-14 rounded-xl bg-primary-container text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/25 active:scale-[0.98] transition-all hover:bg-primary" id="register-action-btn">
+<span class="material-symbols-outlined text-[22px] animate-spin hidden" id="loading-spinner">progress_activity</span>
+<span class="material-symbols-outlined text-[22px]" id="sparkle-icon">auto_awesome</span>
+<span id="btn-text">Register for Event</span>
+</button>
+<!-- Simulated Postgres/Supabase Transaction Payload Inspector -->
+<div class="w-full rounded-2xl bg-inverse-surface p-3.5 flex flex-col gap-2 text-inverse-on-surface shadow-md" id="simulated-payload-box">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">database</span>
+<span class="font-label-sm text-label-sm text-slate-300 font-mono">SUPABASE INSERT PAYLOAD PREVIEW</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-slate-800 text-tertiary-fixed-dim font-mono">table: registration</span>
+</div>
+<div class="bg-black/40 rounded-lg p-2.5 font-mono text-[11px] leading-relaxed text-slate-300 overflow-x-auto select-all">
+<span class="text-primary-fixed">{</span><br/>
+          <span class="text-secondary-fixed">"user_id"</span>: <span class="text-tertiary-fixed-dim">"a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d"</span>,<br/>
+          <span class="text-secondary-fixed">"event_id"</span>: <span class="text-tertiary-fixed-dim">"e839a2f1-44dc-4b20-91a5-78e235492d11"</span>,<br/>
+          <span class="text-secondary-fixed">"createdat"</span>: <span class="text-amber-300" id="payload-timestamp">"2025-04-12T10:30:00Z"</span><br/>
+<span class="text-primary-fixed">}</span>
+</div>
+<span class="font-label-sm text-label-sm text-slate-400">
+        Simulates Supabase row insertion triggering realtime websocket broadcast.
+      </span>
+</div>
+<!-- Success Confirmation Banner Preview (Toggled when registered) -->
+<div class="hidden w-full rounded-2xl bg-tertiary-fixed p-4 shadow-md flex-col gap-2 transition-all" id="confirmation-banner">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary flex items-center justify-center text-on-tertiary shrink-0">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-headline-md text-headline-md text-on-tertiary-fixed font-bold">Registration Confirmed!</span>
+<span class="font-body-sm text-body-sm text-on-tertiary-fixed-variant mt-0.5">
+            Added to your academic calendar. A confirmation QR pass was generated.
+          </span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-label-sm text-label-sm text-on-tertiary-fixed-variant font-mono">Row ID: reg_982f_live_ok</span>
+<button class="font-label-sm text-label-sm text-tertiary underline font-semibold" id="undo-btn">Undo Demo Register</button>
+</div>
+</div>
+</div>
+<!-- Role Switcher Quick Pill Trigger (In-Canvas Floating Demo Tool) -->
+<div class="w-full rounded-xl bg-surface-container-low p-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">group_work</span>
+<span class="font-body-sm text-body-sm text-on-surface">Simulate Switch Role:</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="px-2.5 py-1 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold transition-all" id="toggle-role-student">
+        Student (Alex)
+      </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm hover:bg-surface-container-high transition-all" id="toggle-role-organizer">
+        Faculty (Chen)
+      </button>
+</div>
+</div>
+</div>
+<script>
+  (function initEventRegistration() {
+    let isRegistered = false;
+    let registeredCount = 112;
+    const capacity = 150;
+
+    const registerBtn = document.getElementById('register-action-btn');
+    const loadingSpinner = document.getElementById('loading-spinner');
+    const sparkleIcon = document.getElementById('sparkle-icon');
+    const btnText = document.getElementById('btn-text');
+    const confirmationBanner = document.getElementById('confirmation-banner');
+    const undoBtn = document.getElementById('undo-btn');
+    const metricRegistered = document.getElementById('metric-registered');
+    const metricAvailable = document.getElementById('metric-available');
+    const progressBarFill = document.getElementById('progress-bar-fill');
+    const percentLabel = document.getElementById('percent-label');
+    const userStatusPill = document.getElementById('user-status-pill');
+    const statusCapacityText = document.getElementById('status-capacity-text');
+    const payloadTimestamp = document.getElementById('payload-timestamp');
+    const shareBtn = document.getElementById('share-btn');
+    const bookmarkBtn = document.getElementById('bookmark-btn');
+
+    // Role switcher demo simulation buttons
+    const roleStudentBtn = document.getElementById('toggle-role-student');
+    const roleOrganizerBtn = document.getElementById('toggle-role-organizer');
+
+    function updateTelemetry(isAdded) {
+      if (isAdded) {
+        registeredCount = 113;
+      } else {
+        registeredCount = 112;
+      }
+      const available = capacity - registeredCount;
+      const pct = ((registeredCount / capacity) * 100).toFixed(1);
+
+      metricRegistered.textContent = registeredCount;
+      metricAvailable.textContent = available;
+      progressBarFill.style.width = pct + '%';
+      percentLabel.textContent = pct + '% Filled';
+      statusCapacityText.textContent = available + ' seats open';
+    }
+
+    if (registerBtn) {
+      registerBtn.addEventListener('click', function() {
+        if (isRegistered) return;
+
+        // UI Loading state
+        loadingSpinner.classList.remove('hidden');
+        sparkleIcon.classList.add('hidden');
+        btnText.textContent = 'Writing to Supabase...';
+        registerBtn.disabled = true;
+
+        setTimeout(() => {
+          isRegistered = true;
+          loadingSpinner.classList.add('hidden');
+          sparkleIcon.classList.remove('hidden');
+          sparkleIcon.textContent = 'task_alt';
+          btnText.textContent = 'Registered (Ticket Confirmed)';
+          registerBtn.classList.remove('bg-primary-container', 'hover:bg-primary');
+          registerBtn.classList.add('bg-tertiary-container', 'hover:bg-tertiary');
+          registerBtn.disabled = false;
+
+          userStatusPill.className = 'px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold shrink-0';
+          userStatusPill.textContent = 'Enrolled Attendee';
+
+          if (payloadTimestamp) {
+            payloadTimestamp.textContent = '"' + new Date().toISOString() + '"';
+          }
+
+          confirmationBanner.classList.remove('hidden');
+          confirmationBanner.classList.add('flex');
+          updateTelemetry(true);
+        }, 700);
+      });
+    }
+
+    if (undoBtn) {
+      undoBtn.addEventListener('click', function() {
+        isRegistered = false;
+        sparkleIcon.textContent = 'auto_awesome';
+        btnText.textContent = 'Register for Event';
+        registerBtn.classList.add('bg-primary-container', 'hover:bg-primary');
+        registerBtn.classList.remove('bg-tertiary-container', 'hover:bg-tertiary');
+        
+        userStatusPill.className = 'px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-medium shrink-0';
+        userStatusPill.textContent = 'Not Enrolled';
+
+        confirmationBanner.classList.add('hidden');
+        confirmationBanner.classList.remove('flex');
+        updateTelemetry(false);
+      });
+    }
+
+    if (bookmarkBtn) {
+      let isBookmarked = false;
+      bookmarkBtn.addEventListener('click', function() {
+        isBookmarked = !isBookmarked;
+        const icon = bookmarkBtn.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.textContent = isBookmarked ? 'bookmark' : 'bookmark_border';
+          icon.classList.toggle('text-primary', isBookmarked);
+        }
+      });
+    }
+
+    if (shareBtn) {
+      shareBtn.addEventListener('click', function() {
+        if (navigator.share) {
+          navigator.share({
+            title: 'Annual Hackathon 2025: AI & Future Tech',
+            text: 'Check out this event on CampusConnect!',
+            url: window.location.href,
+          }).catch(() => {});
+        } else {
+          navigator.clipboard?.writeText(window.location.href);
+          const icon = shareBtn.querySelector('.material-symbols-outlined');
+          if (icon) {
+            icon.textContent = 'done';
+            setTimeout(() => { icon.textContent = 'ios_share'; }, 1500);
+          }
+        }
+      });
+    }
+
+    // Role switcher demo interactions
+    if (roleStudentBtn && roleOrganizerBtn) {
+      roleStudentBtn.addEventListener('click', function() {
+        roleStudentBtn.className = 'px-2.5 py-1 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold transition-all';
+        roleOrganizerBtn.className = 'px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm hover:bg-surface-container-high transition-all';
+        registerBtn.classList.remove('hidden');
+      });
+
+      roleOrganizerBtn.addEventListener('click', function() {
+        roleOrganizerBtn.className = 'px-2.5 py-1 rounded-full bg-tertiary-container text-on-tertiary font-label-sm text-label-sm font-semibold transition-all';
+        roleStudentBtn.className = 'px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm hover:bg-surface-container-high transition-all';
+        // In faculty preview, button adapts to managerial view
+        btnText.textContent = 'Manage Event Roster (Host Mode)';
+        sparkleIcon.textContent = 'edit_note';
+      });
+    }
+  })();
+</script></main></body></html>
