@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://one5novws.onrender.com/api/:path*"
+    }
+  ]
+}

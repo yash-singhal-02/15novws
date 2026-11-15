@@ -1,6 +1,7 @@
 (() => {
-  const API_BASE_URL = 'https://one5novws.onrender.com/';
-  const API = new URL(API_BASE_URL, window.location.href);
+  // Use the frontend origin. Vercel and the local Node server proxy /api to Render,
+  // keeping browser requests same-origin and avoiding CORS/preflight failures.
+  const API = new URL('/', window.location.href);
   const $ = (selector, root = document) => root.querySelector(selector);
   let personas = [];
   try { personas = JSON.parse(localStorage.getItem('campusPulsePersonas') || '[]'); } catch { personas = []; }

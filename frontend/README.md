@@ -1,15 +1,15 @@
 # Campus Pulse frontend
 
-The frontend calls the Render API directly at `https://one5novws.onrender.com/`. The Flask backend needs to be redeployed with the CORS handler in `../backend/app.py` before browsers can make cross-origin requests.
+This is a static frontend. Deploy the `frontend` folder as the Vercel project root; no build command or install command is needed. Vercel serves `index.html` and uses `vercel.json` to proxy `/api/*` requests to the Render backend at `https://one5novws.onrender.com`. The browser therefore calls the Vercel origin, avoiding cross-origin browser requests and CORS preflight issues.
 
-To serve the frontend locally after the backend redeploys, from this folder run:
+For local development, run this folder's same-origin API proxy:
 
 ```powershell
-python -m http.server 8000
+node server.js
 ```
 
-Open [http://localhost:8000](http://localhost:8000). You can also run `node server.js` as a local same-origin proxy if you need to use the frontend before the Render backend has redeployed its CORS change.
+Then open [http://127.0.0.1:8000](http://127.0.0.1:8000). `python -m http.server` serves the files but does not proxy API requests.
 
-Use the top-right user control to save named personas and switch between them. Each UUID only needs to be entered once and is stored in this browser's local storage. The backend does not provide a users-list endpoint, so profiles cannot be discovered automatically. The organizer UUID returned with events can be added with the one-click organizer shortcut.
+Use the top-right user control to save named personas and switch between them. Each UUID is stored in this browser's local storage. The backend does not provide a users-list endpoint, so profiles cannot be discovered automatically. The organizer UUID returned with events can be added with the organizer shortcut.
 
-The backend's `GET /api/me/registrations` and event attendee-list endpoint require authentication according to the supplied API contract. This frontend does not add authentication, so the backend may deny those private requests. Public event browsing and event details work without a user profile; creating a registration sends the selected `user_id` and `event_id` in the API request body.
+The backend's `GET /api/me/registrations` and event attendee-list endpoint require authentication. This frontend does not implement Supabase sign-in or send a bearer token, so the backend will deny those private requests. Creating a registration also requires authentication on the backend; entering a user UUID alone does not authenticate the request.
