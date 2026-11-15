@@ -34,6 +34,11 @@ def require_user():
     return user, None
 
 
+@app.get("/health")
+def health():
+    return jsonify({"status": "ok"}), 200
+
+
 @app.get("/api/events")
 def list_events():
     try:
@@ -140,4 +145,4 @@ def event_registrations(event_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", "5000")), debug=False)
