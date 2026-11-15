@@ -39,6 +39,20 @@ def health():
     return jsonify({"status": "ok"}), 200
 
 
+@app.get("/")
+def index():
+    return jsonify({
+        "name": "Events API",
+        "endpoints": {
+            "GET /api/events": "Browse events",
+            "GET /api/events/<id>": "Get event details",
+            "POST /api/registrations": "Create a registration (authentication required)",
+            "GET /api/me/registrations": "List the current user's registrations (authentication required)",
+            "GET /api/events/<id>/registrations": "List attendees (organizer authentication required)",
+        },
+    }), 200
+
+
 @app.get("/api/events")
 def list_events():
     try:
