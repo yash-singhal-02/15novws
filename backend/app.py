@@ -99,7 +99,18 @@ def create_registration():
         if error.code == "23505":
             return jsonify({"error": "Already registered for this event"}), 409
         if error.code == "23503":
-            return jsonify({"error": "Event not found"}), 404
+            # PostgreSQL uses 23503 for any missing referenced row. The old
+            # response blamed the event even when the selected user UUID was
+            # the missing reference.
+            details = " ".join(
+                str(value or "")
+                for value in (error.message, error.details, error.hint)
+            ).lower()
+            if "user_id" in details or "user" in details:
+                return jsonify({"error": "User not found. Choose a UUID that exists in the users table."}), 404
+            if "event_id" in details or "event" in details:
+                return jsonify({"error": "Event not found"}), 404
+            return jsonify({"error": "Registration references a user or event that does not exist."}), 404
         return jsonify({"error": error.message}), 400
 
 
